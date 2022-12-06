@@ -1,38 +1,26 @@
 
 import styles from "./content.module.scss"
 import VideoCard from "../VIdeoCard/videoCard"
-import { useEffect } from "react";
-import axios from "axios";
+import { useEffect, useState } from "react";
+import {fetchingAPI} from "../../fetchingAPI";
 
 function Content() {
+    const [listCard,setListCard] = useState([])
     useEffect(() => {
-
-const options = {
-  method: 'GET',
-  url: 'https://youtube-v31.p.rapidapi.com/playlistItems',
-  params: {playlistId: 'RDZiQo7nAkQHU', part: 'snippet', maxResults: '50'},
-  headers: {
-    'X-RapidAPI-Key': 'a1e25045d9msh15cc83894bba552p12dbc1jsn3a13fbd9ed9d',
-    'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
-  }
-};
-
-axios.request(options).then(function (response) {
-	console.log(response.data);
-}).catch(function (error) {
-	console.error(error);
-});
+        fetchingAPI('search?part=snippet&channelType=any&maxResults=78')
+            .then(res => {
+                setListCard(res.items)
+                console.log(res)
+            })
+            .catch(error => console.log(error))
     },[])
     return ( 
     <div className={styles.wrapper}>
-          <VideoCard/>
-          <VideoCard/>
-          <VideoCard/>
-          <VideoCard/>
-          <VideoCard/>
-          <VideoCard/>
-          <VideoCard/>
-          <VideoCard/>
+         {listCard.map(item => {
+            return (
+                <VideoCard key={item.etag} data={item.snippet} idVideo={item.id.videoId}/>
+            ) 
+         })}
     </div> 
     );
 }

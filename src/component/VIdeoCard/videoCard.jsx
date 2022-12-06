@@ -1,31 +1,39 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Avatar } from '@mui/material';
 
 import styles from "./video.module.scss"
+import { Link } from 'react-router-dom';
 
-export default function ImgMediaCard() {
+export default function ImgMediaCard({data,idVideo}) {
+    const {description,channelTitle,thumbnails} = data
   return (
-    <Card sx={{ maxWidth: 345 ,borderRadius:"10px"}}>
-      <CardMedia
-        sx={{borderRadius:"10px"}}
-        component="img"
-        alt="green iguana"
-        height="188"
-        image="data:image/jpeg;base64,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"
-      />
+    <Card sx={{ maxWidth: 345 ,borderRadius:"10px",boxShadow:"none"}}>
+       <Link to={`/video/${idVideo}`}>
+            <CardMedia
+                sx={{borderRadius:"10px"}}
+                component="img"
+                alt="green iguana"
+                height="188"
+                image={thumbnails?.medium?.url}
+            />
+       </Link>
       <CardContent>
             <div className={styles.info}>
-                <Avatar/>
-                <Typography variant="body2" color="text.secondary">
-                    Lizards are a widespread group of squamate reptiles, with over 6,000
-                    species, ranging across all continents except Antarctica
-                </Typography>
+               <Link> <Avatar src={thumbnails?.default?.url}/></Link>
+                <div className={styles.title}>
+                    <Typography variant="body2" color="text.secondary" sx={{fontWeight:'bold',marginBottom:'10px'}}>
+                         {description}
+                    </Typography>
+                    <Link> 
+                        <Typography variant="body2" color="text.secondary" sx={{fontSize:"12px"}}>
+                            {channelTitle}
+                        </Typography>
+                    </Link>
+                </div>
             </div>
       </CardContent>
     </Card>
