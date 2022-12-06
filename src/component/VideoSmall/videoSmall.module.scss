@@ -2,8 +2,25 @@
     display: flex;
     width: 420px;
     height: 94px;
+    margin-bottom: 10px;
+    column-gap: 10px;
 }
 .thumb {
     width: 100%;
-    height: 100%;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+}
+.des {
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }

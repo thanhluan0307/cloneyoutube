@@ -1,16 +1,21 @@
+import { Typography } from '@mui/material'
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styles from "./videoSmall.module.scss"
-const VideoSmall = () => {
+const VideoSmall = ({data,idVideo}) => {
+  const {description,channelTitle,thumbnails} = data
   return (
-    <div className={styles.wrapper}>
+    <Link className={styles.wrapper} to={`/video/${idVideo}`}>
         <div className={styles.thumb}>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgWmvX9sTMK9-lpU512G_nBYam-tINPJJtqw&usqp=CAU" alt="" />
+            <img src={thumbnails?.default?.url} alt="" />
         </div>
         <div className={styles.info}>
-            <p className={styles.des}>asdasdasdasdasd</p>
-            <p className={styles.channleTitle}>asdasdasdasdasd</p>
+            <p className={styles.des}>{description}</p>
+            <Typography variant="body2" color="text.secondary" sx={{fontWeight:'bold'}}>
+              {channelTitle}    
+            </Typography>
         </div>
-    </div>
+    </Link>
   )
 }
 
