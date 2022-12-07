@@ -1,0 +1,23 @@
+.commentInfo {
+    display: flex;
+    column-gap: 16px;
+    margin-bottom: 10px;
+    .name {
+        font-weight: 700;
+        font-size: 13px;
+        color: #0f0f0f;
+    }
+    .comment {
+        font-size: 14px;
+    }
+}
+.info {
+    span {
+        display: inline-flex;
+        align-items: end;
+        margin-right: 4px;
+        span {
+            font-size: 12px;
+        }
+    }
+}

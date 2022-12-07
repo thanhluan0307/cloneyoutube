@@ -9,8 +9,11 @@ const DetailVideo = () => {
   const {id} =useParams()
   const [dataVideo,setDataVideo] = useState([])
   useEffect(()=> {
+   
     fetchingAPI(`videos?part=snippet&id=${id}`)
-      .then(res => setDataVideo(res.items[0]))
+      .then(res => {
+        setDataVideo(res.items[0])
+      })
       .then(error => console.log(error))
   },[id])
   return (

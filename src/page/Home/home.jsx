@@ -1,20 +1,18 @@
 import React from 'react'
 
-import Content from '../../component/Content/content'
 import Header from '../../component/Header/header'
 import Navbar from '../../component/Navbar/navbar'
-import Subnav from '../../component/Subnav/subnav'
+
 import styles from "./home.module.scss"
 
-const Home = () => {
+const Home = ({children}) => {
   return (
     <div className={styles.wrapper}>
         <Header/>
         <div className={styles.contaier}>
-            <Navbar/>
+              <Navbar/>
             <div className={styles.content}>
-                <Subnav/>
-                <Content/>
+                {children}
             </div>
         </div>
     </div>
