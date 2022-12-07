@@ -10,7 +10,6 @@ import { Link } from 'react-router-dom';
 
 export default function ImgMediaCard({data,idVideo}) {
     const {title,channelTitle,thumbnails} = data
-    console.log(data)
   return (
     <Card sx={{ maxWidth: 345 ,borderRadius:"10px",boxShadow:"none"}}>
        <Link to={`/video/${idVideo}`}>
