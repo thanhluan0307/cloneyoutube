@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import Tippy from '@tippyjs/react/headless';
 import { FaKeyboard, FaMicrophone, FaSearch,FaMinus } from 'react-icons/fa'
 import useDebounce from '../../customHook/useDebounce'
@@ -6,6 +6,7 @@ import styles from "./search.module.scss"
 import {fetchingAPI} from "../../fetchingAPI"
 import { Link } from 'react-router-dom'
 import Wrapper from '../Wrapper/wrapper';
+import { IconButton, Tooltip } from '@mui/material';
 
 const Search = () => {
     const [searchValue,setSearchValue] = useState('')
@@ -40,7 +41,7 @@ const Search = () => {
                             <Wrapper>
                                 {searchResult.map(item => {
                                     return (
-                                        <div onClick={handleClear}>
+                                        <div onClick={handleClear} key={item.etag}>
                                             <Link to={`/video/${item.id.videoId}`} key={item.etag} className={styles.result}>
                                                 <FaSearch/>
                                                 <span>{item.snippet.channelTitle}</span>
@@ -64,12 +65,20 @@ const Search = () => {
                      </Tippy>    
                     <p><FaKeyboard/></p>
                     {searchValue ? <p onClick={handleClear}><FaMinus/></p> : null }
-                    <Link to={`search/${debounce}`} className={styles.btnSearch}><FaSearch/></Link>
-                    <button className={styles.mix}><FaMicrophone/></button>
+                                <Link to={`search/${debounce}`} className={styles.btnSearch}>
+                                    <FaSearch/>
+                                </Link>
+                    <button className={styles.mix}>
+                    <Tooltip title="Tìm kiếm bằng giọng nói">
+                        <IconButton aria-label="delete">
+                            <FaMicrophone className="icon"/>
+                        </IconButton>
+                    </Tooltip>
+                        </button>
                 </div>   
         </>
     
   )
 }
 
-export default Search
+export default memo(Search)

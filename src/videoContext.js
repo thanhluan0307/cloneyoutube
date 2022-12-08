@@ -7,7 +7,7 @@ function VideoProvider ({children}) {
     const [listCard,setListCard] = useState([])
     const couter = 0
     useEffect(() => {
-        fetchingAPI('search?part=snippet&channelType=any&maxResults=78')
+        fetchingAPI('search?part=snippet&channelType=any&maxResults=20')
             .then(res => {
                 setListCard(res.items)
                 
