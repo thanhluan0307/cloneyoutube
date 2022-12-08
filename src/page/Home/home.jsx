@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import Header from '../../component/Header/header'
 import Navbar from '../../component/Navbar/navbar'
@@ -6,11 +6,12 @@ import Navbar from '../../component/Navbar/navbar'
 import styles from "./home.module.scss"
 
 const Home = ({children}) => {
+  const [show,setShow] = useState(true)
   return (
     <div className={styles.wrapper}>
-        <Header/>
+        <Header show={setShow}/>
         <div className={styles.contaier}>
-              <Navbar/>
+             {show ?  <Navbar/> : null}
             <div className={styles.content}>
                 {children}
             </div>

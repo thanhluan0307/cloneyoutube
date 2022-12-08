@@ -7,7 +7,7 @@ import Subnav from "../Subnav/subnav"
 function Content() {
     const dataCard = useContext(VideoContext)
     return ( 
-        <Home>
+        <Home >
              <div className={styles.wrapper}>
                 <Subnav/>
                 {dataCard.listCard.map(item => {
