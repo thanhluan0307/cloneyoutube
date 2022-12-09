@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from 'react'
+import React, { memo, useCallback, useEffect, useState } from 'react'
 import Tippy from '@tippyjs/react/headless';
 import { FaKeyboard, FaMicrophone, FaSearch,FaMinus } from 'react-icons/fa'
 import useDebounce from '../../customHook/useDebounce'
@@ -20,13 +20,13 @@ const Search = () => {
             })
             .catch(error => console.log(error))
       },[debounce])
-    const handleClear = () =>{
+    const handleClear = useCallback(() =>{
         setSearchValue('')
         setSearchResult([])
-    }
-    const handleHide = () => {
+    },[])
+    const handleHide = useCallback(() => {
         setCheck(false)
-    }
+    },[])
     console.log(searchResult)
   return (
         <>  
@@ -65,7 +65,7 @@ const Search = () => {
                      </Tippy>    
                     <p><FaKeyboard/></p>
                     {searchValue ? <p onClick={handleClear}><FaMinus/></p> : null }
-                                <Link to={`search/${debounce}`} className={styles.btnSearch}>
+                                <Link to={`search?${debounce}`} className={styles.btnSearch}>
                                     <FaSearch/>
                                 </Link>
                     <button className={styles.mix}>

@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import "./App.css"
 
 import DetailVideo from "./page/DetailVideo/detailVideo"
-import Channels from './page/Channle/channels';
+import ChannelsPage from './page/ChannelsPage/channels';
 import Content from './component/Content/content';
 import SearchVideo from './page/SearchVideo/searchVideo';
 function App() {
@@ -13,8 +13,8 @@ function App() {
       <Routes>
           <Route path="/" element={<Content/>}/>
           <Route path="/video/:id" element={<DetailVideo/>}/>
-          <Route path="/channels/:id" element={<Channels/>}/>
-          <Route path="/search/:id" element={<SearchVideo/>}/>
+          <Route path="/channels/:id" element={<ChannelsPage/>}/>
+          <Route path="/search?q=" element={<SearchVideo/>}/>
       </Routes>
    </BrowserRouter>
   );

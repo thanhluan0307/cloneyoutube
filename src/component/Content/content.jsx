@@ -4,6 +4,7 @@ import styles from "./content.module.scss"
 import VideoCard from "../VIdeoCard/videoCard"
 import { VideoContext } from "../../videoContext";
 import Subnav from "../Subnav/subnav"
+
 function Content() {
     const dataCard = useContext(VideoContext)
     return ( 
@@ -12,7 +13,7 @@ function Content() {
                 <Subnav/>
                 {dataCard.listCard.map(item => {
                     return (
-                        <VideoCard key={item.etag} data={item.snippet} idVideo={item.id.videoId}/>
+                        <VideoCard key={item.etag} data={item} idVideo={item.id}/>
                     ) 
                  })}
             </div> 

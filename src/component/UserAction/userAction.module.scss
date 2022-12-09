@@ -1,0 +1,26 @@
+.actions {
+    display: flex;
+    column-gap: 20px;
+    .item {
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        column-gap: 20px;
+        padding: 8px 20px;
+        cursor: pointer;
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        p {
+            display: block;
+            font-size: 14px;
+            flex: 1 ;
+        }
+    }
+}
+.bell {
+    height: 110px;
+    width: 100%;
+    color: rgba(0, 0, 0, 0.15);
+    
+}

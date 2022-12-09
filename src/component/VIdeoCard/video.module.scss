@@ -1,4 +1,5 @@
 .item {
+    overflow: hidden;
     transition: all 0.5s  ease-in-out ;
     border-radius: 10px;
     &:hover {
@@ -13,4 +14,11 @@
 .video {
     width: 100%;
     border-radius: 10px;
+}
+.titleVideo {
+    white-space: nowrap;
+    width: 260px; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    
 }

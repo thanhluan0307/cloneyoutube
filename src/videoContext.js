@@ -1,22 +1,27 @@
-import {useState, useEffect,createContext} from "react"
+import {useState, useEffect,createContext, useRef} from "react"
 import { fetchingAPI } from "./fetchingAPI"
 
 const VideoContext = createContext()
 
 function VideoProvider ({children}) {
     const [listCard,setListCard] = useState([])
-    const couter = 0
+    const [load,setload] = useState(false)
+    let timerID = useRef()
     useEffect(() => {
-        fetchingAPI('search?part=snippet&channelType=any&maxResults=20')
+        fetchingAPI('videos?part=snippet,contentDetails,statistics&chart=mostPopular&regionCode=VN&maxResults=12')
             .then(res => {
                 setListCard(res.items)
-                
+                timerID.current = setTimeout(()=> {
+                    setload(true)
+                },1000)
             })
             .catch(error => console.log(error))
-    },[couter])
+        return ()=> clearTimeout(timerID)
+    },[])
+    console.log(listCard)
     const data = {
         listCard,
-        couter
+        load
     }
     return (
         <VideoContext.Provider value={data} >

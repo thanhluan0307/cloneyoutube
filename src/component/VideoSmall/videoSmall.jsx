@@ -3,6 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styles from "./videoSmall.module.scss"
 const VideoSmall = ({data,idVideo}) => {
+
   const {title,channelTitle,thumbnails} = data
   return (
     <Link className={styles.wrapper} to={`/video/${idVideo}`}>

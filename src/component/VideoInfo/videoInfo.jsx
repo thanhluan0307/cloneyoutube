@@ -8,7 +8,6 @@ import {fetchingAPI} from '../../fetchingAPI'
 import { Link } from 'react-router-dom'
 const VideoInfo = ({data}) => {
   const {snippet} = data
-  console.log(snippet)
   const [comment,setComment] = useState([])
   useEffect(() => {
       fetchingAPI(`commentThreads?part=snippet,replies&videoId=${data.id}`)
@@ -69,7 +68,6 @@ const VideoInfo = ({data}) => {
           >
               <p>{snippet?.description}</p>
           </Box>
-          <h4>{}</h4>
             {comment.map(item => {
               return (
                 <Comment channelId={snippet?.channelId} key={item.id} data={item}/>

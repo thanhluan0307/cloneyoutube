@@ -10,7 +10,7 @@ const ListVideo = () => {
     <div className={styles.wrapper}>
          {dataCard.listCard.map(item => {
             return (
-                <VideoSmall key={item.etag} data={item.snippet} idVideo={item.id.videoId}/>
+                <VideoSmall key={item.etag} data={item.snippet} idVideo={item.id}/>
             ) 
          })}
     </div> 

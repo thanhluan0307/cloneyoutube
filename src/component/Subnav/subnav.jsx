@@ -1,5 +1,5 @@
 import { Button } from '@mui/material'
-import React from 'react'
+import React, { memo } from 'react'
 import styles from "./subnav.module.scss"
 const Subnav = () => {
   return (
@@ -19,4 +19,4 @@ const Subnav = () => {
   )
 }
 
-export default Subnav
+export default memo(Subnav)
