@@ -14,6 +14,10 @@ const Search = () => {
     const debounce = useDebounce(searchValue,500)
     const [check,setCheck] = useState(true)
     useEffect(() => {
+        if(!debounce.trim()) {
+            setSearchResult([])
+            return
+          }
         fetchingAPI(`search?part=snippet&type=video&maxResults=10&q=${debounce}`)
             .then(res => {
                 setSearchResult(res.items)
@@ -40,11 +44,17 @@ const Search = () => {
                         <div className={styles.searchResult} tabIndex="-1" {...attrs}>
                             <Wrapper>
                                 {searchResult.map(item => {
+                                    const valueData = item.snippet.title
+                                    let searchValue = ''
+                                    if(valueData.includes(searchValue)) {
+                                        const index = valueData.indexOf(searchValue)
+                                        searchValue = `${valueData.slice(index,searchValue.length + 30)}...`
+                                    }
                                     return (
                                         <div onClick={handleClear} key={item.etag}>
                                             <Link to={`/video/${item.id.videoId}`} key={item.etag} className={styles.result}>
                                                 <FaSearch/>
-                                                <span>{item.snippet.channelTitle}</span>
+                                                <span>{searchValue.toLowerCase()}</span>
                                             </Link> 
                                         </div>
                                     )

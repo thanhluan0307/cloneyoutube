@@ -17,7 +17,6 @@ import { memo, useContext, useMemo, useState } from 'react'
     const URL = `https://www.youtube.com/embed/${idVideo}?autoplay=1`
     const view = data?.statistics?.viewCount 
     const timeCreateVideo = data?.snippet?.publishedAt
-    
     const time = useMemo(()=> {
       let time = (Date.parse(new Date()) - Date.parse(timeCreateVideo))/ 100 / 60 / 60
       let check = 0;
@@ -54,7 +53,6 @@ import { memo, useContext, useMemo, useState } from 'react'
                         height="180px" 
                         src={URL} 
                         title={URL}
-                        frameBorder="0"
                       >
                        </iframe>) : (   
                       <CardMedia
@@ -69,7 +67,7 @@ import { memo, useContext, useMemo, useState } from 'react'
             }
           <CardContent>
             <div className={styles.info}>
-                {dataCard.load ? ( <Link to={`/channels/${data.channelId}`}> <Avatar src={data?.snippet?.thumbnails?.default?.url}/></Link>):
+                {dataCard.load ? ( <Link to={`/channels/${data?.snippet?.channelId}`}> <Avatar src={data?.snippet?.thumbnails?.default?.url}/></Link>):
                   <Skeleton variant="circular" width={40} height={40} />
                 }
                 <div className={styles.title}>

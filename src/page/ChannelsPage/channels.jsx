@@ -1,12 +1,14 @@
 
-import Home from '../../component/Header/header'
-
+import Home from '../Home/home'
+import Channels from '../../component/Channels/channels'
 const ChannelsPage = () => {
  
   return (
     <Home>
-    
+        <Channels/>
     </Home>
+      
+
   )
 }
 

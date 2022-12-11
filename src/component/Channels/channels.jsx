@@ -8,22 +8,22 @@ import styles from "./channels.module.scss"
 import {fetchingAPI} from '../../fetchingAPI'
 const Channels = () => {
   const {id} = useParams()
-  console.log(123)
   const [data,setData] = useState()
   useEffect(() => {
+    
     fetchingAPI(`channels?part=snippet,contentDetails,statistics&id=${id}`)
       .then(res => {
-        console.log(res.items[0])
+        console.log(res)
         setData(res.items[0])
       })
       .catch(error => console.log(error))
   },[id])
   return (
     <div className={styles.wrapper}>
-    <div className={styles.thumb}>
-        <img src={data?.snippet?.thumbnails?.medium?.url} alt="" />
-    </div>
-    <div className={styles.channelsInfo}>
+      <div className={styles.thumb}>
+          <img src={data?.snippet?.thumbnails?.high?.url} alt="" />
+      </div>
+      <div className={styles.channelsInfo}>
        <Box sx={{display:'flex', columnGap: '16px'}}>
         <Avatar sx={{ width: 76, height: 76 }} src={data?.snippet?.thumbnails?.default?.url}/>
         <div className={styles.body}>
@@ -53,6 +53,7 @@ const Channels = () => {
             </iframe>  
        </Box>
     </div>
+  
   </div> 
   )
 }
