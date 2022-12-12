@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 
+import styles from "./home.module.scss"
 import Header from '../../component/Header/header'
 import Navbar from '../../component/Navbar/navbar'
-
-import styles from "./home.module.scss"
 
 const Home = ({children}) => {
   const [check,setCheck] = useState(true)

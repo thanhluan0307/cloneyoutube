@@ -1,31 +1,34 @@
-import { Avatar, Button, Typography } from '@mui/material'
-import { Box } from '@mui/system'
 import React, { useEffect, useState } from 'react'
-import {FaDownload, FaHeart, FaShare, FaThumbsUp, FaPlus,FaEllipsisH} from "react-icons/fa"
-import styles from "./videoInfo.module.scss"
-import Comment from "../Comment/comment"
-import {fetchingAPI} from '../../fetchingAPI'
+
+import { Box } from '@mui/system'
 import { Link } from 'react-router-dom'
+import Comment from "../Comment/comment"
+import styles from "./videoInfo.module.scss"
+import { Avatar, Button, Typography } from '@mui/material'
+import {FaDownload, FaHeart, FaShare, FaThumbsUp, FaPlus,FaEllipsisH} from "react-icons/fa"
+
+import {fetchingAPI} from '../../fetchingAPI'
+
 const VideoInfo = ({data}) => {
   const {snippet} = data
   const [comment,setComment] = useState([])
   useEffect(() => {
-      fetchingAPI(`commentThreads?part=snippet,replies&videoId=${data.id}`)
-        .then(res => {
-          setComment(res.items)
-        })
-        .catch(error => console.log(error))
+    fetchingAPI(`commentThreads?part=snippet,replies&videoId=${data.id}`)
+      .then(res => {
+        setComment(res.items)
+      })
+      .catch(error => console.log(error))
   },[data.id])
   return (
     <div className={styles.wrapper}>
         <iframe 
-            width="1280" 
-            height="720" 
-            src={`https://www.youtube.com/embed/${data.id}`} 
-            title={data.title}
-            frameBorder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowFullScreen>
+          width="1280" 
+          height="720" 
+          src={`https://www.youtube.com/embed/${data.id}?autoplay=1`} 
+          title={data.title}
+          frameBorder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowFullScreen>
         </iframe>
         <Box>
           <h3 className={styles.title}>{snippet?.title}</h3>
@@ -57,14 +60,13 @@ const VideoInfo = ({data}) => {
         </Box>
         <div className={styles.body}>
           <Box 
-              sx={{padding:'10px',
-                  borderRadius:'10px',
-                  backgroundColor:'rgba(0, 0, 0, 0.05)',
-                  marginBottom:'20px',
-                  height: 'max-content',
-                  '&:hover': {backgroundColor: 'rgba(0, 0, 0, 0.07)'},
-
-            }}        
+            sx={{padding:'10px',
+                borderRadius:'10px',
+                backgroundColor:'rgba(0, 0, 0, 0.05)',
+                marginBottom:'20px',
+                height: 'max-content',
+                '&:hover': {backgroundColor: 'rgba(0, 0, 0, 0.07)'}
+              }}        
           >
               <p>{snippet?.description}</p>
           </Box>

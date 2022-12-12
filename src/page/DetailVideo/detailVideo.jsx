@@ -1,10 +1,12 @@
+import { useParams } from 'react-router-dom'
 import React, { useEffect, useState } from 'react'
+
+import styles from "./detailVideo.module.scss"
+import { fetchingAPI } from '../../fetchingAPI'
 import Header from "../../component/Header/header"
 import VideoInfo from '../../component/VideoInfo/videoInfo'
 import ListVideo from "../../component/ListVideo/listVideo"
-import styles from "./detailVideo.module.scss"
-import { useParams } from 'react-router-dom'
-import { fetchingAPI } from '../../fetchingAPI'
+
 const DetailVideo = () => {
   const {id} =useParams()
   const [dataVideo,setDataVideo] = useState([])

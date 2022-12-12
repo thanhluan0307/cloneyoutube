@@ -4,3 +4,8 @@
 .content {
     margin-left: 240px;
 }
+@media screen and (max-width:450px) {
+    .content{
+      margin: 64px auto 0 auto;
+    }
+}

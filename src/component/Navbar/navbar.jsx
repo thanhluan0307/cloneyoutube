@@ -1,24 +1,24 @@
-import { Box, Typography } from '@mui/material'
 import React, { memo } from 'react'
-import { FaHome, FaTv  } from 'react-icons/fa'
-import styles from "./navbar.module.scss"
+import { Box, Typography } from '@mui/material'
+import RestoreIcon from '@mui/icons-material/Restore';
 import ShortcutIcon from '@mui/icons-material/Shortcut';
 import SlideshowIcon from '@mui/icons-material/Slideshow';
 import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
-import RestoreIcon from '@mui/icons-material/Restore';
 import QueryBuilderIcon from '@mui/icons-material/QueryBuilder';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
-import { FcMusic,FcSportsMode,FcNews } from "react-icons/fc";
-import {SiRiotgames } from "react-icons/si";
-import {AiOutlineFire } from "react-icons/ai";
-import {GiMusicalNotes} from "react-icons/gi";
+
+import {SlNote} from "react-icons/sl";
+import {TbMoodKid} from "react-icons/tb";
 import {GrGamepad} from "react-icons/gr";
 import {ImNewspaper} from "react-icons/im";
-import {GiTrophyCup} from "react-icons/gi";
-import {TbMoodKid} from "react-icons/tb";
-import {AiOutlineSetting} from "react-icons/ai";
-import {SlNote} from "react-icons/sl";
+import {SiRiotgames } from "react-icons/si";
 import {RiFeedbackLine} from "react-icons/ri";
+import { FaHome, FaTv  } from 'react-icons/fa'
+import {GiMusicalNotes,GiTrophyCup} from "react-icons/gi";
+import { FcMusic,FcSportsMode,FcNews } from "react-icons/fc";
+import {AiOutlineFire,AiOutlineSetting } from "react-icons/ai";
+
+import styles from "./navbar.module.scss"
 const Navbar = ({check}) => {
    
   return (

@@ -1,12 +1,12 @@
+import { FaKeyboard, FaMicrophone, FaSearch,FaMinus } from 'react-icons/fa'
 import React, { memo, useCallback, useEffect, useState } from 'react'
 import Tippy from '@tippyjs/react/headless';
-import { FaKeyboard, FaMicrophone, FaSearch,FaMinus } from 'react-icons/fa'
 import useDebounce from '../../customHook/useDebounce'
 import styles from "./search.module.scss"
+import { IconButton, Tooltip } from '@mui/material';
 import {fetchingAPI} from "../../fetchingAPI"
 import { Link } from 'react-router-dom'
 import Wrapper from '../Wrapper/wrapper';
-import { IconButton, Tooltip } from '@mui/material';
 
 const Search = () => {
     const [searchValue,setSearchValue] = useState('')
@@ -31,7 +31,12 @@ const Search = () => {
     const handleHide = useCallback(() => {
         setCheck(false)
     },[])
-    console.log(searchResult)
+    const handleChange =(e) => {
+        const searchValue = e.target.value
+        if(!searchValue.startsWith(' ')) {
+            setSearchValue(searchValue)
+        } 
+    }
   return (
         <>  
          
@@ -47,7 +52,7 @@ const Search = () => {
                                     const valueData = item.snippet.title
                                     let searchValue = ''
                                     if(valueData.includes(searchValue)) {
-                                        const index = valueData.indexOf(searchValue)
+                                        const index = valueData.toLowerCase().indexOf(searchValue)
                                         searchValue = `${valueData.slice(index,searchValue.length + 30)}...`
                                     }
                                     return (
@@ -69,22 +74,22 @@ const Search = () => {
                             type="text" 
                             placeholder="Tìm kiếm"
                             value={searchValue}
-                            onChange={(e) => setSearchValue(e.target.value)}
+                            onChange={handleChange}
                             onFocus={() => setCheck(true)}
                         />
                      </Tippy>    
                     <p><FaKeyboard/></p>
                     {searchValue ? <p onClick={handleClear}><FaMinus/></p> : null }
-                                <Link to={`search?${debounce}`} className={styles.btnSearch}>
-                                    <FaSearch/>
-                                </Link>
+                    <Link to={`/search?q=${searchValue}`} className={styles.btnSearch}>
+                        <FaSearch/>
+                    </Link>
                     <button className={styles.mix}>
-                    <Tooltip title="Tìm kiếm bằng giọng nói">
-                        <IconButton aria-label="delete">
-                            <FaMicrophone className="icon"/>
-                        </IconButton>
-                    </Tooltip>
-                        </button>
+                        <Tooltip title="Tìm kiếm bằng giọng nói">
+                            <IconButton aria-label="delete">
+                                <FaMicrophone className="icon"/>
+                            </IconButton>
+                        </Tooltip>
+                    </button>
                 </div>   
         </>
     

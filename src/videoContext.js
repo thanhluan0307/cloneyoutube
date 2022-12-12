@@ -1,4 +1,5 @@
 import {useState, useEffect,createContext, useRef} from "react"
+
 import { fetchingAPI } from "./fetchingAPI"
 
 const VideoContext = createContext()
@@ -21,13 +22,13 @@ export const categorys = [
     {id:'GH',name:'Ghana'},
     {id:'LY',name:'Libya'},
 ]
-//'NG','GB','HU','ID','HK','SG','IN','US','MY','RU','UY','VE','GH','LY','NO'] 
+
 function VideoProvider ({children}) {
-    const [listCard,setListCard] = useState([])
+    const timerID = useRef()
     const [load,setload] = useState(false)
-    let timerID = useRef()
+    const [listCard,setListCard] = useState([])
     useEffect(() => {
-        fetchingAPI('videos?part=snippet,contentDetails,statistics&chart=mostPopular&regionCode=VN&maxResults=12')
+        fetchingAPI('videos?part=snippet,contentDetails,statistics&chart=mostPopular&regionCode=VN&maxResults=48')
             .then(res => {
                 setListCard(res.items)
                 timerID.current = setTimeout(()=> {

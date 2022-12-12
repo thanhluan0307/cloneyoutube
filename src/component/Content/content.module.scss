@@ -7,4 +7,10 @@
     background-color: white;
     margin-top: 150px;
     row-gap: 30px;
+    flex-wrap: wrap;
+}
+@media screen and (max-width:450px) {
+    .wrapper {
+        justify-content: center;
+    }
 }

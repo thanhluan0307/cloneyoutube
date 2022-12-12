@@ -3,7 +3,9 @@ import { Box } from '@mui/system'
 import React from 'react'
 import { FaThumbsDown, FaThumbsUp } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+
 import styles from "./comment.module.scss"
+
 const Comment = ({data,channelId}) => {
    
     const infoCommentForUser = data.snippet.topLevelComment.snippet

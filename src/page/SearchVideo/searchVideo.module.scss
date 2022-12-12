@@ -8,3 +8,62 @@
     margin-top: 150px;
     row-gap: 30px;
 }
+.contaier {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    column-gap: 20px;
+    padding-left: 50px;
+    width: 90%;
+    img {
+        width: 360px;
+        height: 200px;
+        border-radius: 12px;
+        
+    }
+    .title {
+        color: #0f0f0f;
+        font-size: 18px;
+    }
+    .channels {
+        display: inline-flex;
+        margin: 12px 0;
+        align-items: center;
+        column-gap: 4px;
+
+    }
+    .des {
+        color: #606066;
+        font-size: 12px;
+    }
+    &:hover .more,&:hover .icons {
+        display: block;
+    }
+  
+    .more {
+        display: none;
+        cursor: pointer;
+        font-size: 20px;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}
+.video {
+    position: relative;
+}
+.icons {
+    display: none;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 20px;
+    p {
+        
+        color: white;
+        background-color: rgba(0, 0, 0, 0.3);
+        margin-bottom: 4px;
+        line-height: 10px;
+        padding: 5px;
+    }
+}

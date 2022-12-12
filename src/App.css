@@ -33,3 +33,15 @@ ul {
 .icon {
   font-size: 22px;
 }
+body::-webkit-scrollbar {
+	width: 10px;
+}
+body::-webkit-scrollbar-thumb {
+	border-radius: 4px;
+	background-color: rgba(0, 0, 0, 0.15);
+}
+body::-webkit-scrollbar-track {
+	border-radius: 0;
+	background-color: #f2f2f2;
+	border: none;
+}

@@ -1,9 +1,10 @@
 import {useContext} from "react"
+
+import Subnav from "../Subnav/subnav"
 import Home from "../../page/Home/home";
 import styles from "./content.module.scss"
 import VideoCard from "../VIdeoCard/videoCard"
 import { VideoContext } from "../../videoContext";
-import Subnav from "../Subnav/subnav"
 
 function Content() {
     const dataCard = useContext(VideoContext)

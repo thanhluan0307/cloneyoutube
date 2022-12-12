@@ -1,33 +1,25 @@
 import React, { memo } from 'react'
-import styles from "./userAction.module.scss"
-import {FaVideo,FaBell,FaUser} from "react-icons/fa"
-
+import { Box } from "@mui/system";
 import Tippy from "@tippyjs/react";
 import { IconButton, Tooltip, Typography } from "@mui/material";
-import Wrapper from "../Wrapper/wrapper";
-import {BsFillCloudArrowUpFill} from "react-icons/bs";
-import {CiWifiOn} from "react-icons/ci";
-import {FaRegUserCircle} from "react-icons/fa";
-import {SlControlPlay} from "react-icons/sl";
-import {FiUsers} from "react-icons/fi";
-import {FiLogIn} from "react-icons/fi";
-import {CiDollar} from "react-icons/ci";
-import {RiShieldUserLine} from "react-icons/ri";
-import {FaRegMoon} from "react-icons/fa";
-import {FaLanguage} from "react-icons/fa";
-import {MdOutlineArrowForwardIos} from "react-icons/md";
-import {GrLanguage} from "react-icons/gr";
-import {BsKeyboard,BsBell} from "react-icons/bs";
-import {FiHelpCircle} from "react-icons/fi";
-import {MdOutlineFeedback} from "react-icons/md";
-import {BsShieldCheck} from "react-icons/bs";
-import {AiOutlineSetting} from "react-icons/ai";
 
-import { Box } from "@mui/system";
+
+import {GrLanguage} from "react-icons/gr";
+import {SlControlPlay} from "react-icons/sl";
+import {RiShieldUserLine} from "react-icons/ri";
+import {AiOutlineSetting} from "react-icons/ai";
+import {CiWifiOn,CiDollar} from "react-icons/ci";
+import {BsFillCloudArrowUpFill} from "react-icons/bs";
+import {FiUsers,FiLogIn,FiHelpCircle} from "react-icons/fi";
+import {BsKeyboard,BsBell,BsShieldCheck} from "react-icons/bs";
+import {MdOutlineFeedback,MdOutlineArrowForwardIos} from "react-icons/md";
+import {FaRegMoon,FaLanguage,FaRegUserCircle,FaVideo,FaBell,FaUser} from "react-icons/fa";
+
+import Wrapper from "../Wrapper/wrapper";
+import styles from "./userAction.module.scss"
 
 const UserAction = () => {
 
-   
   return (
     <div className={styles.actions}>
                 <Tippy  trigger='click' interactive placement="bottom-end" offset={[0,0]} content={
@@ -39,7 +31,7 @@ const UserAction = () => {
                     <div>
                         <Tooltip title="Tạo">
                             <IconButton aria-label="delete">
-                            <FaVideo className="icon"/>   
+                                <FaVideo className="icon"/>   
                             </IconButton>
                         </Tooltip>
                     </div>
@@ -85,9 +77,8 @@ const UserAction = () => {
 
                         </Box>
                         <Box sx={{borderBottom:'1px solid #e5e5e5',padding:'8px 0px'}}>
-                        <p className={styles.item}><CiDollar/><p>Giao dịch và mua gói thành viên</p></p>
-                        <p className={styles.item}><RiShieldUserLine/><p>Dữ liệu của bạn trong Youtube</p></p>
-                           
+                            <p className={styles.item}><CiDollar/><p>Giao dịch và mua gói thành viên</p></p>
+                            <p className={styles.item}><RiShieldUserLine/><p>Dữ liệu của bạn trong Youtube</p></p>
                         </Box>
                         <Box sx={{borderBottom:'1px solid #e5e5e5',padding:'8px 0px'}}>
                             <p className={styles.item}><FaRegMoon/><p>Giao diện : Giao diện thiết bị</p><MdOutlineArrowForwardIos/></p>
@@ -97,9 +88,7 @@ const UserAction = () => {
                             <p className={styles.item}><BsKeyboard/><p>Phím tắt</p></p>
                         </Box>
                         <Box sx={{borderBottom:'1px solid #e5e5e5',padding:'8px 0px'}}>
-                        <p className={styles.item}><AiOutlineSetting/><p>Cài đặt</p></p>
-
-                           
+                            <p className={styles.item}><AiOutlineSetting/><p>Cài đặt</p></p>                           
                         </Box>
                         <Box sx={{paddingTop:'8px'}}>
                         <p className={styles.item}><FiHelpCircle/><p>Trợ giúp</p></p>
@@ -111,7 +100,7 @@ const UserAction = () => {
                     <div>
                         <Tooltip title="Thông tin">
                             <IconButton aria-label="delete">
-                            <FaUser className="icon"/>
+                                <FaUser className="icon"/>
                             </IconButton>
                         </Tooltip>
                     </div>

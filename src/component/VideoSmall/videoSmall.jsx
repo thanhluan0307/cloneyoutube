@@ -1,7 +1,9 @@
-import { Typography } from '@mui/material'
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Typography } from '@mui/material'
+
 import styles from "./videoSmall.module.scss"
+
 const VideoSmall = ({data,idVideo}) => {
 
   const {title,channelTitle,thumbnails} = data

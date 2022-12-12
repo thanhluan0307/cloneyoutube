@@ -1,11 +1,12 @@
-
 import { Avatar, Button } from '@mui/material'
 import { Box } from '@mui/system'
 import React, { memo, useEffect, useState } from 'react'
 import { FaSearch } from 'react-icons/fa'
 import { useParams } from 'react-router-dom'
+
 import styles from "./channels.module.scss"
 import {fetchingAPI} from '../../fetchingAPI'
+
 const Channels = () => {
   const {id} = useParams()
   const [data,setData] = useState()

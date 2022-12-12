@@ -5,7 +5,12 @@
     left: 290px;
     right: 0;
     z-index: 1;
-    background-color: white;
+    background-color:white;
     padding: 15px 0 10px 0;
     width: 82%;
+}
+@media screen and (max-width:450px) {
+    .wrapper {
+        left: 40px;
+    }
 }
