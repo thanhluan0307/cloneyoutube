@@ -7,10 +7,21 @@
     background-color: white;
     margin-top: 150px;
     row-gap: 30px;
-    flex-wrap: wrap;
 }
-@media screen and (max-width:450px) {
-    .wrapper {
+@media screen and (max-width: 505px) {
+   .wrapper {
+        width: 98%;
         justify-content: center;
+   }
+}
+@media screen and (min-width:505px) and (max-width:655px) {
+    .wrapper {
+        width: 98%;
+        justify-content: space-between;
+    }
+}
+@media screen and (min-width:655px) and (max-width:900px) {
+    .wrapper {
+        width: 96%;
     }
 }

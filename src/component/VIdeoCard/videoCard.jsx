@@ -70,35 +70,37 @@ import { VideoContext } from '../../videoContext';
           </Link>
           ) : <Skeleton variant="rectangular" width={345} height={188}  sx={{borderRadius:'10px'}}/>
         }
-        <CardContent>
-          <div className={styles.info}>
-            {dataCard.load ? ( <Link to={`/channels/${data?.snippet?.channelId}`}> <Avatar src={data?.snippet?.thumbnails?.default?.url}/></Link>):
-              <Skeleton variant="circular" width={40} height={40} />
-            }
-            <div className={styles.title}>
-              {dataCard.load ? (
-                <Box sx={{pr:3}}>
-                    <Link to={`/video/${idVideo}`}>
-                      <Typography gutterBottom variant="body2" sx={{fontWeight:'bold',marginBottom:'4px'}} className={styles.titleVideo}>
-                        {data?.snippet?.title}
-                      </Typography>
-                      <Typography display="block" variant="caption" color="text.secondary" sx={{fontSize:"12px"}}>
-                        {data?.snippet?.channelTitle}
-                      </Typography>
-                      <Typography display="block" variant="caption" color="text.secondary" sx={{fontSize:"12px"}}>
-                        { view.length === 6 ? `${view.slice(0,3)} N lượt xem`:`${view[0]} Tr lượt xem` } | {time}
-                      </Typography>
-                    </Link>  
-                </Box>
-              ):(
-                <Box sx={{ pt: 3 }}>
-                  <Skeleton width="200px"/>
-                  <Skeleton width="200px" />
-                </Box>
-              )}
+      
+          <CardContent className={styles.body}>
+            <div className={styles.info}>
+              {dataCard.load ? ( <Link to={`/channels/${data?.snippet?.channelId}`}> <Avatar src={data?.snippet?.thumbnails?.default?.url}/></Link>):
+                <Skeleton variant="circular" width={40} height={40} />
+              }
+              <div className={styles.title}>
+                {dataCard.load ? (
+                  <Box sx={{pr:3}}>
+                      <Link to={`/video/${idVideo}`}>
+                        <Typography gutterBottom variant="body2" sx={{fontWeight:'bold',marginBottom:'4px'}} className={styles.titleVideo}>
+                          {data?.snippet?.title}
+                        </Typography>
+                        <Typography display="block" variant="caption" color="text.secondary" sx={{fontSize:"12px"}}>
+                          {data?.snippet?.channelTitle}
+                        </Typography>
+                        <Typography display="block" variant="caption" color="text.secondary" sx={{fontSize:"12px"}}>
+                          { view.length === 6 ? `${view.slice(0,3)} N lượt xem`:`${view[0]} Tr lượt xem` } | {time}
+                        </Typography>
+                      </Link>  
+                  </Box>
+                ):(
+                  <Box sx={{ pt: 3 }}>
+                    <Skeleton width="200px"/>
+                    <Skeleton width="200px" />
+                  </Box>
+                )}
+              </div>
             </div>
-          </div>
-        </CardContent>
+          </CardContent>
+        
     </Card>
     </div>
   );

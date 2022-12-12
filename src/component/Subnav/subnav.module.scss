@@ -7,10 +7,16 @@
     z-index: 1;
     background-color:white;
     padding: 15px 0 10px 0;
-    width: 82%;
+    width: 85%;
 }
-@media screen and (max-width:450px) {
+@media screen and (max-width:655px) {
     .wrapper {
-        left: 40px;
+        left: 0;
+        width: 100%;
+    }
+}
+@media screen and (min-width:655px) and (max-width:1300px) {
+    .wrapper {
+        left: 100px;
     }
 }
