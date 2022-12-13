@@ -10,9 +10,9 @@ import Skeleton from '@mui/material/Skeleton';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';
-
 import { VideoContext } from '../../videoContext';
- function ImgMediaCard({data,idVideo}) {
+
+ function VideoCard({data,idVideo,check}) {
   const [playVideo,setPlayVideo] = useState(false)
    const dataCard = useContext(VideoContext)
     const URL = `https://www.youtube.com/embed/${idVideo}?autoplay=1`
@@ -44,7 +44,7 @@ import { VideoContext } from '../../videoContext';
    },[])
    
   return (
-    <div className={styles.item} 
+    <div className={check ? styles.item : styles.nam} 
    // onMouseMove={()=>setPlayVideo(true)} onMouseLeave={() => setPlayVideo(false)}
     >
       <Card sx={{ width:"100%" ,borderRadius:"10px",boxShadow:"none"}}>
@@ -71,34 +71,34 @@ import { VideoContext } from '../../videoContext';
           ) : <Skeleton variant="rectangular" width={345} height={188}  sx={{borderRadius:'10px'}}/>
         }
       
-          <CardContent className={styles.body}>
-            <div className={styles.info}>
+          <CardContent sx={{display:'flex',padding:'16px 10px 0px 10px',columnGap:'10px'}}>
+        
               {dataCard.load ? ( <Link to={`/channels/${data?.snippet?.channelId}`}> <Avatar src={data?.snippet?.thumbnails?.default?.url}/></Link>):
                 <Skeleton variant="circular" width={40} height={40} />
               }
-              <div className={styles.title}>
-                {dataCard.load ? (
-                  <Box sx={{pr:3}}>
-                      <Link to={`/video/${idVideo}`}>
-                        <Typography gutterBottom variant="body2" sx={{fontWeight:'bold',marginBottom:'4px'}} className={styles.titleVideo}>
-                          {data?.snippet?.title}
-                        </Typography>
-                        <Typography display="block" variant="caption" color="text.secondary" sx={{fontSize:"12px"}}>
-                          {data?.snippet?.channelTitle}
-                        </Typography>
-                        <Typography display="block" variant="caption" color="text.secondary" sx={{fontSize:"12px"}}>
-                          { view.length === 6 ? `${view.slice(0,3)} N lượt xem`:`${view[0]} Tr lượt xem` } | {time}
-                        </Typography>
-                      </Link>  
-                  </Box>
+    
+                {dataCard.load ? (    
+                    <Box sx={{width:'100%'}}>
+                        <Link to={`/video/${idVideo}`}>
+                          <Typography gutterBottom variant="body2" sx={{fontWeight:'bold',marginBottom:'4px'}}>
+                            {data?.snippet?.title}
+                          </Typography>
+                          <Typography display="block" variant="caption" color="text.secondary" sx={{fontSize:"12px"}}>
+                            {data?.snippet?.channelTitle}
+                          </Typography>
+                          <Typography display="block" variant="caption" color="text.secondary" sx={{fontSize:"12px"}}>
+                            { view.length === 6 ? `${view.slice(0,3)} N lượt xem`:`${view[0]} Tr lượt xem` } | {time}
+                          </Typography>
+                        </Link>
+                    </Box>
                 ):(
                   <Box sx={{ pt: 3 }}>
                     <Skeleton width="200px"/>
                     <Skeleton width="200px" />
                   </Box>
                 )}
-              </div>
-            </div>
+              
+      
           </CardContent>
         
     </Card>
@@ -106,4 +106,4 @@ import { VideoContext } from '../../videoContext';
   );
 }
 
-export default memo(ImgMediaCard)
+export default memo(VideoCard)

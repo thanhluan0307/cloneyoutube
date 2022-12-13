@@ -17,7 +17,7 @@ const theme = createTheme({
   },
 });
 
-const Subnav = () => {
+const Subnav = ({check}) => {
   const [alignment, setAlignment] = useState('VN');
   const handleChange = (event, newAlignment) => {
     setAlignment(newAlignment);
@@ -31,7 +31,7 @@ const Subnav = () => {
   }
  
   return (
-    <div className={styles.wrapper}>
+    <div className={check ? styles.wrapper : styles.ml30}>
       <ThemeProvider theme={theme}>
         <ToggleButtonGroup color="neutral"
           sx={{justifyContent:'space-between',width:'100%',height: '34px'}}

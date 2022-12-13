@@ -5,14 +5,15 @@ import "./App.css"
 
 import DetailVideo from "./page/DetailVideo/detailVideo"
 import ChannelsPage from './page/ChannelsPage/channels';
-import Content from './component/Content/content';
+
 import SearchVideo from './page/SearchVideo/searchVideo';
+import Home from './page/Home/home';
 
 function App() {
   return (
    <BrowserRouter>
       <Routes>
-          <Route path="/" element={<Content/>}/>
+          <Route path="/" element={<Home/>}/>
           <Route path="/video/:id" element={<DetailVideo/>}/>
           <Route path="/channels/:id" element={<ChannelsPage/>}/>
           <Route path="/search" element={<SearchVideo/>}/>

@@ -1,12 +1,18 @@
-import Home from '../Home/home'
-import Channels from '../../component/Channels/channels'
 
+import Header from '../../component/Header/header'
+import NavbarPc from '../../component/NavbarPc/navbarPc'
+import styles from './channels.module.scss'
+import Channels from '../../component/Channels/channels'
 const ChannelsPage = () => {
  
   return (
-    <Home>
-        <Channels/>
-    </Home>
+   <>
+    <Header/>
+    <NavbarPc/>
+    <div className={styles.wrapper}>
+      <Channels/>
+    </div>
+   </>
   )
 }
 

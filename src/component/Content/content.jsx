@@ -1,25 +1,23 @@
-import {useContext} from "react"
+import {memo, useContext} from "react"
 
-import Subnav from "../Subnav/subnav"
-import Home from "../../page/Home/home";
 import styles from "./content.module.scss"
 import VideoCard from "../VIdeoCard/videoCard"
 import { VideoContext } from "../../videoContext";
 
-function Content() {
+function Content({check}) {
     const dataCard = useContext(VideoContext)
     return ( 
-        <Home>
+        <div className={check ? styles.ml240 : styles.ml93}>   
              <div className={styles.wrapper}>
-                <Subnav/>
                 {dataCard.listCard.map(item => {
                     return (
-                        <VideoCard key={item.etag} data={item} idVideo={item.id}/>
+                        <VideoCard check={check} key={item.etag} data={item} idVideo={item.id}/>
                     ) 
                  })}
             </div> 
-        </Home>
+        </div>
+        
     );
 }
 
-export default Content;
+export default memo(Content);

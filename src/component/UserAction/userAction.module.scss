@@ -2,7 +2,6 @@
     display: flex;
     column-gap: 20px;
     .item {
-        font-size: 18px;
         display: flex;
         align-items: center;
         column-gap: 20px;
@@ -21,8 +20,6 @@
 .bell {
     height: 110px;
     width: 100%;
-    color: rgba(0, 0, 0, 0.15);
-    
 }
 @media screen and (max-width:900px) {
     .actions {

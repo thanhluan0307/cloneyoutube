@@ -9,14 +9,25 @@
     padding: 15px 0 10px 0;
     width: 85%;
 }
+.ml30 {
+    display: flex;
+    position: fixed;
+    top: 64px;
+    left: 104px;
+    right: 0;
+    z-index: 1;
+    background-color:white;
+    padding: 15px 0 10px 0;
+    width: 90%;
+}
 @media screen and (max-width:655px) {
-    .wrapper {
+    .ml30 {
         left: 0;
         width: 100%;
     }
 }
 @media screen and (min-width:655px) and (max-width:1300px) {
-    .wrapper {
+    .ml30 {
         left: 100px;
     }
 }

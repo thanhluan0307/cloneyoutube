@@ -1,16 +1,3 @@
 .contaier {
     margin-top: 64px;
 }
-.content {
-    margin-left: 240px;
-}
-@media screen and (max-width:655px) {
-    .content{
-      margin: 64px auto 0 auto;
-    }
-}
-@media screen and (min-width:655px) and (max-width:1300px) {
-   .content {    
-        margin-left: 93px;
-    }
-}

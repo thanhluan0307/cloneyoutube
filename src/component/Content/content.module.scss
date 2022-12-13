@@ -25,3 +25,20 @@
         width: 96%;
     }
 }
+.ml240 {
+    margin-left: 240px;
+}
+.ml93 {
+    margin-left: 30px;
+}
+@media screen and (max-width:655px) {
+    .ml93{
+      margin: 64px auto 0 auto;
+    }
+}
+@media screen and (min-width:655px) and (max-width:1300px) {
+   .ml93 {    
+        margin-left: 93px;
+    }
+}
+
