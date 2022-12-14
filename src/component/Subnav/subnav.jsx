@@ -25,7 +25,7 @@ const Subnav = ({check}) => {
   let dataContext = useContext(VideoContext)
   const videoByCategory = (value) => {
    
-    fetchingAPI(`videos?part=snippet,contentDetails,statistics&chart=mostPopular&regionCode=${value}&maxResults=12`)
+    fetchingAPI(`videos?part=snippet,contentDetails,statistics&chart=mostPopular&regionCode=${value}&maxResults=24`)
         .then(res => dataContext.setListCard(res.items))
         .catch(erro => console.log(erro))
   }

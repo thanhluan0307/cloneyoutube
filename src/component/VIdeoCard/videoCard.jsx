@@ -45,7 +45,7 @@ import { VideoContext } from '../../videoContext';
    
   return (
     <div className={check ? styles.item : styles.nam} 
-   // onMouseMove={()=>setPlayVideo(true)} onMouseLeave={() => setPlayVideo(false)}
+    onMouseMove={()=>setPlayVideo(true)} onMouseLeave={() => setPlayVideo(false)}
     >
       <Card sx={{ width:"100%" ,borderRadius:"10px",boxShadow:"none"}}>
         {dataCard.load ? (
@@ -80,13 +80,13 @@ import { VideoContext } from '../../videoContext';
                 {dataCard.load ? (    
                     <Box sx={{width:'100%'}}>
                         <Link to={`/video/${idVideo}`}>
-                          <Typography gutterBottom variant="body2" sx={{fontWeight:'bold',marginBottom:'4px'}}>
+                          <Typography component={'span'} gutterBottom variant="body2" sx={{fontWeight:'bold',marginBottom:'4px'}}>
                             {data?.snippet?.title}
                           </Typography>
-                          <Typography display="block" variant="caption" color="text.secondary" sx={{fontSize:"12px"}}>
+                          <Typography component={'span'} display="block" variant="caption" color="text.secondary" sx={{fontSize:"12px"}}>
                             {data?.snippet?.channelTitle}
                           </Typography>
-                          <Typography display="block" variant="caption" color="text.secondary" sx={{fontSize:"12px"}}>
+                          <Typography component={'span'} display="block" variant="caption" color="text.secondary" sx={{fontSize:"12px"}}>
                             { view.length === 6 ? `${view.slice(0,3)} N lượt xem`:`${view[0]} Tr lượt xem` } | {time}
                           </Typography>
                         </Link>

@@ -40,7 +40,7 @@ const UserAction = () => {
                     <Wrapper>
                         <Box sx={{textAlign:'center',padding:'0 10px',fontSize:'18px'}}>
                             <Box sx={{display:'flex',alignItems:'center',justifyContent:'space-between',borderBottom:'1px solid rgba(0, 0, 0, 0.15)'}}>
-                                <Typography sx={{fontSize:'16px'}}>Thông báo</Typography>
+                                <Typography component={'span'}  sx={{fontSize:'16px'}}>Thông báo</Typography>
                                 <Tooltip title="Cài đặt">
                                     <IconButton aria-label="delete">
                                         <AiOutlineSetting/>
@@ -49,10 +49,10 @@ const UserAction = () => {
                             </Box>
                             <Box sx={{padding:'40px'}}>
                                 <BsBell className={styles.bell}/>
-                                <Typography sx={{fontSize:'16px',fontWeight:'600', margin:'10px 0 4px 0'}}>
+                                <Typography component={'span'}  sx={{fontSize:'16px',fontWeight:'600', margin:'10px 0 4px 0'}}>
                                     Thông báo của bạn hiển thị ở đây               
                                 </Typography>
-                                <Typography sx={{fontSize:'14px'}}>
+                                <Typography component={'span'}  sx={{fontSize:'14px'}}>
                                     Đăng ký kênh yêu thích của bạn để nhận thông báo về các video mới nhất.
                                 </Typography>
                             </Box>

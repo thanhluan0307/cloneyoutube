@@ -60,13 +60,13 @@ const NavbarPc = () => {
         <p className={styles.item}><RiFeedbackLine/><span>Gửi ý kiến phản hồi</span></p>
     </Box>
     <Box sx={{borderBottom:'1px solid #e5e5e5',padding:'8px 0px'}}>
-        <Typography variant="body2" color="text.secondary" sx={{fontSize:'13px',color:'#606060',marginBottom:'6px'}}>
+        <Typography component={'span'}  variant="body2" color="text.secondary" sx={{fontSize:'13px',color:'#606060',marginBottom:'6px'}}>
             Giới thiệu Báo chí Bản quyền Liên hệ với chúng tôi Người sáng tạo Quảng cáo Nhà phát triển
         </Typography>
-        <Typography variant="body2" color="text.secondary" sx={{fontSize:'13px',color:'#606060',marginBottom:'6px'}}>    
+        <Typography component={'span'}  variant="body2" color="text.secondary" sx={{fontSize:'13px',color:'#606060',marginBottom:'6px'}}>    
             Điều khoản Quyền riêng tư Chính sách và an toàn Cách YouTube hoạt động Thử các tính năng mới
         </Typography>
-        <Typography variant="body2" color="text.secondary" sx={{fontSize:'13px'}}>    
+        <Typography component={'span'}  variant="body2" color="text.secondary" sx={{fontSize:'13px'}}>    
             © 2022 Google LLC
         </Typography>
     </Box>

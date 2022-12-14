@@ -14,7 +14,7 @@ const VideoSmall = ({data,idVideo}) => {
         </div>
         <div className={styles.info}>
             <p className={styles.des}>{title}</p>
-            <Typography variant="body2" color="text.secondary" sx={{fontWeight:'bold'}}>
+            <Typography component={'span'}  variant="body2" color="text.secondary" sx={{fontWeight:'bold'}}>
               {channelTitle}    
             </Typography>
         </div>

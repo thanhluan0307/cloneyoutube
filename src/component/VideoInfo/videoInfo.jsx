@@ -35,7 +35,9 @@ const VideoInfo = ({data}) => {
           <Box sx={{display:'flex',justifyContent : 'space-between',alignItems:"center"}}>
               <Box sx={{display:'flex',justifyContent : 'space-between',alignItems:"center"}}>
                 <Link to={`/channels/${snippet?.channelId}`}><Avatar src={snippet?.thumbnails?.default?.url}/></Link>
-                <Typography sx={{margin:'0 10px'}}>{snippet?.channelTitle}</Typography>
+                <Typography component={'span'}  sx={{margin:'0 10px'}}>
+                  {snippet?.channelTitle}
+                </Typography>
                 <Button 
                   variant="text" 
                   sx={{textTransform: 'none',

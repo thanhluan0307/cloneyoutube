@@ -43,14 +43,7 @@ function Header({setCheck}) {
     
         setState({ ...state, [anchor]: open });
       };
-    const handleResize = () => {
-        setWidth(window.innerWidth)
-        if(window.innerWidth<1300){
-            setCheck(false)
-        }else{
-            setCheck(true)
-        }
-    }
+    
     const list = (anchor) => (
         <Box
           sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
@@ -68,6 +61,14 @@ function Header({setCheck}) {
         </Box>
       );
     useEffect(() => {
+      const handleResize = () => {
+        setWidth(window.innerWidth)
+        if(window.innerWidth<1300){
+            setCheck(false)
+        }else{
+            setCheck(true)
+        }
+    }
         window.addEventListener('resize',handleResize)
          return () => {window.removeEventListener('resize',handleResize)}
       // eslint-disable-next-line react-hooks/exhaustive-deps

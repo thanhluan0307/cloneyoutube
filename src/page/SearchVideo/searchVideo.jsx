@@ -18,7 +18,7 @@ const SearchVideo = () => {
         setData(res.items))
       .catch (error => setData(error))
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
+  },[searchParams])
   return (
     <>
     <Header/>

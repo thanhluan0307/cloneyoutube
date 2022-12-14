@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {useState, useEffect,createContext, useRef} from "react"
 
 import { fetchingAPI } from "./fetchingAPI"
@@ -27,22 +28,30 @@ function VideoProvider ({children}) {
     const timerID = useRef()
     const [load,setload] = useState(false)
     const [listCard,setListCard] = useState([])
+    const [nextPage,setNextPage] = useState('')
     useEffect(() => {
-        fetchingAPI('videos?part=snippet,contentDetails,statistics&chart=mostPopular&regionCode=VN&maxResults=48')
+        fetchingAPI(`videos?part=snippet,contentDetails,statistics&chart=mostPopular&regionCode=VN&maxResults=24&pageToken=${nextPage}`)
             .then(res => {
-                setListCard(res.items)
+                setListCard([...listCard,...res.items])
                 timerID.current = setTimeout(()=> {
                     setload(true)
                 },1000)
+                window.onscroll = function () {
+                    if (window.innerHeight + document.documentElement.scrollTop
+                    === document.documentElement.offsetHeight   ) {
+                        setNextPage(res.nextPageToken)
+                    }
+                }
             })
             .catch(error => console.log(error))
         return ()=> clearTimeout(timerID)
-    },[])
+    },[nextPage])   
     const data = {
         listCard,
         load,
         setListCard
     }
+
     return (
         <VideoContext.Provider value={data} >
             {children} 
