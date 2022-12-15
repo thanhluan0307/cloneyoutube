@@ -27,10 +27,7 @@ function Header({setCheck}) {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
     const [state, setState] = useState({
-        top: false,
-        left: false,
-        bottom: false,
-        right: false,
+        left: false,  
       });
     const [width,setWidth] = useState(window.innerWidth)
     const hanleCheck = () => {
@@ -76,7 +73,7 @@ function Header({setCheck}) {
     return ( 
         <div className={styles.wrapper}>
             <div className={styles.logoBox}>
-              <button onClick={ width < 1300 ? (toggleDrawer('left', true)) : hanleCheck  }><FaBars/></button>
+              <button onClick={ width < 1300 || window.location.href.includes('video') ? (toggleDrawer('left', true)) : hanleCheck  }><FaBars/></button>
                   <Drawer
                       anchor={'left'}
                       open={state['left']}

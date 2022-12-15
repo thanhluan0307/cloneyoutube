@@ -15,7 +15,7 @@ import { VideoContext } from '../../videoContext';
  function VideoCard({data,idVideo,check}) {
   const [playVideo,setPlayVideo] = useState(false)
    const dataCard = useContext(VideoContext)
-    const URL = `https://www.youtube.com/embed/${idVideo}?autoplay=1`
+    const URL = `https://www.youtube.com/embed/${idVideo}?autoplay=1&controls=0&showinfo=0`
     const view = data?.statistics?.viewCount 
     const timeCreateVideo = data?.snippet?.publishedAt
     const time = useMemo(()=> {
@@ -45,7 +45,7 @@ import { VideoContext } from '../../videoContext';
    
   return (
     <div className={check ? styles.item : styles.nam} 
-    onMouseMove={()=>setPlayVideo(true)} onMouseLeave={() => setPlayVideo(false)}
+    //onMouseMove={()=>setPlayVideo(true)} onMouseLeave={() => setPlayVideo(false)}
     >
       <Card sx={{ width:"100%" ,borderRadius:"10px",boxShadow:"none"}}>
         {dataCard.load ? (
@@ -54,7 +54,7 @@ import { VideoContext } from '../../videoContext';
               <iframe
                 className={styles.video}
                 width="345px" 
-                height="180px" 
+                height="190px" 
                 src={URL} 
                 title={URL}
               >

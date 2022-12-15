@@ -6,7 +6,7 @@ import "./App.css"
 import DetailVideo from "./page/DetailVideo/detailVideo"
 import ChannelsPage from './page/ChannelsPage/channels';
 
-import SearchVideo from './page/SearchVideo/searchVideo';
+import SearchPage from './page/SearchPage/searchPage';
 import Home from './page/Home/home';
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
           <Route path="/" element={<Home/>}/>
           <Route path="/video/:id" element={<DetailVideo/>}/>
           <Route path="/channels/:id" element={<ChannelsPage/>}/>
-          <Route path="/search" element={<SearchVideo/>}/>
+          <Route path="/search" element={<SearchPage/>}/>
       </Routes>
    </BrowserRouter>
   );

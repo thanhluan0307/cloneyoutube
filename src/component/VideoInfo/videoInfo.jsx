@@ -21,18 +21,18 @@ const VideoInfo = ({data}) => {
   },[data.id])
   return (
     <div className={styles.wrapper}>
-        <iframe 
-          width="1280" 
-          height="720" 
-          src={`https://www.youtube.com/embed/${data.id}?autoplay=1`} 
-          title={data.title}
-          frameBorder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-          allowFullScreen>
-        </iframe>
+        <div class={styles.iframe}>
+          <iframe
+            src={`https://www.youtube.com/embed/${data.id}?autoplay=1`} 
+            title={data.title}
+            frameBorder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowFullScreen>
+          </iframe>
+        </div>
         <Box>
           <h3 className={styles.title}>{snippet?.title}</h3>
-          <Box sx={{display:'flex',justifyContent : 'space-between',alignItems:"center"}}>
+          <div className={styles.infoTitle}>
               <Box sx={{display:'flex',justifyContent : 'space-between',alignItems:"center"}}>
                 <Link to={`/channels/${snippet?.channelId}`}><Avatar src={snippet?.thumbnails?.default?.url}/></Link>
                 <Typography component={'span'}  sx={{margin:'0 10px'}}>
@@ -51,14 +51,14 @@ const VideoInfo = ({data}) => {
                   </Button> 
               </Box>
               <Box>
-                  <Button sx={{borderRadius:'99px',marginLeft:'10px',backgroundColor:'rgba(0, 0, 0, 0.05)',textTransform: 'none',minHeight:'36px',color:'black'}}><FaThumbsUp className={styles.mr4}/></Button>
-                  <Button sx={{borderRadius:'99px',marginLeft:'10px',backgroundColor:'rgba(0, 0, 0, 0.05)',textTransform: 'none',minHeight:'36px',color:'black'}}><FaShare className={styles.mr4}/>Chia sẻ</Button>
-                  <Button sx={{borderRadius:'99px',marginLeft:'10px',backgroundColor:'rgba(0, 0, 0, 0.05)',textTransform: 'none',minHeight:'36px',color:'black'}}><FaDownload className={styles.mr4}/>Tải xuống</Button>
-                  <Button sx={{borderRadius:'99px',marginLeft:'10px',backgroundColor:'rgba(0, 0, 0, 0.05)',textTransform: 'none',minHeight:'36px',color:'black'}}><FaHeart className={styles.mr4}/>Cảm ơn</Button>
-                  <Button sx={{borderRadius:'99px',marginLeft:'10px',backgroundColor:'rgba(0, 0, 0, 0.05)',textTransform: 'none',minHeight:'36px',color:'black'}}><FaPlus className={styles.mr4}/>Lưu</Button>
-                  <Button sx={{borderRadius:'99px',marginLeft:'10px',backgroundColor:'rgba(0, 0, 0, 0.05)',textTransform: 'none',minHeight:'36px',color:'black'}}><FaEllipsisH className={styles.mr4}/></Button>
+                  <Button sx={{borderRadius:'99px',marginRight:'10px',backgroundColor:'rgba(0, 0, 0, 0.05)',textTransform: 'none',minHeight:'36px',color:'black'}}><FaThumbsUp className={styles.mr4}/></Button>
+                  <Button sx={{borderRadius:'99px',marginRight:'10px',backgroundColor:'rgba(0, 0, 0, 0.05)',textTransform: 'none',minHeight:'36px',color:'black'}}><FaShare className={styles.mr4}/>Chia sẻ</Button>
+                  <Button sx={{borderRadius:'99px',marginRight:'10px',backgroundColor:'rgba(0, 0, 0, 0.05)',textTransform: 'none',minHeight:'36px',color:'black'}}><FaDownload className={styles.mr4}/>Tải xuống</Button>
+                  <Button sx={{borderRadius:'99px',marginRight:'10px',backgroundColor:'rgba(0, 0, 0, 0.05)',textTransform: 'none',minHeight:'36px',color:'black'}}><FaHeart className={styles.mr4}/>Cảm ơn</Button>
+                  <Button sx={{borderRadius:'99px',marginRight:'10px',backgroundColor:'rgba(0, 0, 0, 0.05)',textTransform: 'none',minHeight:'36px',color:'black'}}><FaPlus className={styles.mr4}/>Lưu</Button>
+                  <Button sx={{borderRadius:'99px',marginRight:'10px',backgroundColor:'rgba(0, 0, 0, 0.05)',textTransform: 'none',minHeight:'36px',color:'black'}}><FaEllipsisH className={styles.mr4}/></Button>
               </Box>
-          </Box>
+          </div>
         </Box>
         <div className={styles.body}>
           <Box 

@@ -29,6 +29,7 @@ function VideoProvider ({children}) {
     const [load,setload] = useState(false)
     const [listCard,setListCard] = useState([])
     const [nextPage,setNextPage] = useState('')
+    const [check,setCheck] = useState(true)
     useEffect(() => {
         fetchingAPI(`videos?part=snippet,contentDetails,statistics&chart=mostPopular&regionCode=VN&maxResults=24&pageToken=${nextPage}`)
             .then(res => {
@@ -38,7 +39,7 @@ function VideoProvider ({children}) {
                 },1000)
                 window.onscroll = function () {
                     if (window.innerHeight + document.documentElement.scrollTop
-                    === document.documentElement.offsetHeight   ) {
+                    >= (document.documentElement.offsetHeight - 200)  ) {
                         setNextPage(res.nextPageToken)
                     }
                 }
@@ -49,7 +50,9 @@ function VideoProvider ({children}) {
     const data = {
         listCard,
         load,
-        setListCard
+        setListCard,
+        check,
+        setCheck
     }
 
     return (

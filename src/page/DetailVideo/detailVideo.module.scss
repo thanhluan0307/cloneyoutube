@@ -5,3 +5,8 @@
     margin: 0 auto;
     column-gap: 26px;
 }
+@media screen and (max-width:1310px) {
+    .listVideo {
+        display: none;
+    }
+}
