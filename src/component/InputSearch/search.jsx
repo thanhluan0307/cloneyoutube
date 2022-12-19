@@ -40,57 +40,57 @@ const Search = () => {
   return (
         <>  
          
-                <div className={styles.search}>
-                    <Tippy
-                        placement="bottom-start"
-                        interactive
-                        visible={check && searchResult.length > 0 && searchValue !== ''}
-                        render={attrs => (
-                        <div className={styles.searchResult} tabIndex="-1" {...attrs}>
-                            <Wrapper>
-                                {searchResult.map(item => {
-                                    const valueData = item.snippet.title
-                                    let searchValue = ''
-                                    if(valueData.includes(searchValue)) {
-                                        const index = valueData.toLowerCase().indexOf(searchValue)
-                                        searchValue = `${valueData.slice(index,searchValue.length + 30)}...`
-                                    }
-                                    return (
-                                        <div onClick={handleClear} key={item.etag}>
-                                            <Link to={`/video/${item.id.videoId}`} key={item.etag} className={styles.result}>
-                                                <FaSearch/>
-                                                <span>{searchValue.toLowerCase()}</span>
-                                            </Link> 
-                                        </div>
-                                    )
-                                })}
-                            
-                            </Wrapper>
-                        </div>
-                        )}
-                        onClickOutside = {handleHide}
-                    >
-                        <input 
-                            type="text" 
-                            placeholder="Tìm kiếm"
-                            value={searchValue}
-                            onChange={handleChange}
-                            onFocus={() => setCheck(true)}
-                        />
-                     </Tippy>    
-                    <p><FaKeyboard/></p>
-                    {searchValue ? <p onClick={handleClear}><FaMinus/></p> : null }
-                    <Link to={`/search?q=${searchValue}`} className={styles.btnSearch}>
-                        <FaSearch/>
-                    </Link>
-                    <button className={styles.mix}>
-                        <Tooltip title="Tìm kiếm bằng giọng nói">
-                            <IconButton aria-label="delete">
-                                <FaMicrophone className="icon"/>
-                            </IconButton>
-                        </Tooltip>
-                    </button>
-                </div>   
+            <div className={styles.search}>
+                <Tippy
+                    placement="bottom-start"
+                    interactive
+                    visible={check && searchResult.length > 0 && searchValue !== ''}
+                    render={attrs => (
+                    <div className={styles.searchResult} tabIndex="-1" {...attrs}>
+                        <Wrapper>
+                            {searchResult.map(item => {
+                                const valueData = item.snippet.title
+                                let searchValue = ''
+                                if(valueData.includes(searchValue)) {
+                                    const index = valueData.toLowerCase().indexOf(searchValue)
+                                    searchValue = `${valueData.slice(index,searchValue.length + 30)}...`
+                                }
+                                return (
+                                    <div onClick={handleClear} key={item.etag}>
+                                        <Link to={`/video/${item.id.videoId}`} key={item.etag} className={styles.result}>
+                                            <FaSearch/>
+                                            <span>{searchValue.toLowerCase()}</span>
+                                        </Link> 
+                                    </div>
+                                )
+                            })}
+                        
+                        </Wrapper>
+                    </div>
+                    )}
+                    onClickOutside = {handleHide}
+                >
+                    <input 
+                        type="text" 
+                        placeholder="Tìm kiếm"
+                        value={searchValue}
+                        onChange={handleChange}
+                        onFocus={() => setCheck(true)}
+                    />
+                    </Tippy>    
+                <p><FaKeyboard/></p>
+                {searchValue ? <p onClick={handleClear}><FaMinus/></p> : null }
+                <Link to={`/search?q=${searchValue}`} className={styles.btnSearch}>
+                    <FaSearch/>
+                </Link>
+                <button className={styles.mix}>
+                    <Tooltip title="Tìm kiếm bằng giọng nói">
+                        <IconButton aria-label="delete">
+                            <FaMicrophone className="icon"/>
+                        </IconButton>
+                    </Tooltip>
+                </button>
+            </div>   
         </>
     
   )

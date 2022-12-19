@@ -1,67 +1,50 @@
 import React, { memo, useContext, useState } from 'react'
-import { ToggleButton, ToggleButtonGroup } from '@mui/material'
+import { ToggleButton,  } from '@mui/material'
 
-import styles from "./subnav.module.scss"
 import { fetchingAPI } from '../../fetchingAPI'
 import {categorys, VideoContext} from '../../videoContext'
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+import Slider from 'react-slick'
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+import styles from "./subnav.module.scss"
 
-
-const theme = createTheme({
-  palette: {
-    neutral: {
-      main: '#6200ea',
-      contrastText: '#ff9800',
-    },
-  },
-});
 
 const Subnav = ({check}) => {
-  const [alignment, setAlignment] = useState('VN');
-  const handleChange = (event, newAlignment) => {
-    setAlignment(newAlignment);
+  const settings = {
+    className: "slider variable-width",
+    infinite: true,
+    centerMode: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    variableWidth: true,
   };
+
+  const [active,setActive] = useState('UY')
+ 
   let dataContext = useContext(VideoContext)
   const videoByCategory = (value) => {
-   
+    dataContext.setLoad(false)
     fetchingAPI(`videos?part=snippet,contentDetails,statistics&chart=mostPopular&regionCode=${value}&maxResults=24`)
-        .then(res => dataContext.setListCard(res.items))
+    .then(res => {
+          setActive(value)
+          dataContext.setLoad(true)
+          dataContext.setListCard(res.items)
+        })
         .catch(erro => console.log(erro))
   }
  
   return (
     <div className={check ? styles.wrapper : styles.ml30}>
-      <ThemeProvider theme={theme}>
-        <ToggleButtonGroup color="neutral"
-          sx={{justifyContent:'space-between',width:'100%',height: '34px'}}
-          value={alignment}
-          exclusive
-          onChange={handleChange}
-          aria-label="Platform"
-        >
-          {categorys.map((item) => {
-          return (
-            <ToggleButton
-              sx={{
-                minWidth: 'max-content',
-                marginRight:'10px',
-                textTransform:'none',
-                borderRadius: '10px !important',
-                border: 'none',
-                color: 'black',
-                backgroundColor: 'rgba(0,0,0,0.1)'
-              }}
-              key={item.id}
-              onClick={() => videoByCategory(item.id)}
-              value={item.id}
-            >
-              {item.name}
-            </ToggleButton>
-          )
-          })}
-        </ToggleButtonGroup>
-      </ThemeProvider>
+        <Slider {...settings}>
+            {categorys.map(item => {
+              return (
+                <div className={styles.btn}>
+                  <ToggleButton value={item.name} key={item.name} className={active === item.id ? styles.active : null} onClick={() => videoByCategory(item.id)} size='small' sx={{border:'none',bgcolor:'#f2f2f2',color:'#0f0f0f',borderRadius: '8px',padding:' 4px 12px'}} >{item.name}</ToggleButton>
+                </div>
+              )
+            })}
+        </Slider>
     </div>
   )
 }

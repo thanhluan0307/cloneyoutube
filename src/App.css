@@ -44,3 +44,7 @@ body::-webkit-scrollbar-track {
 input[type="file"] {
   color:#1976d2
 }
+.slick-prev:before,.slick-next:before {
+  color: black !important;
+  
+}

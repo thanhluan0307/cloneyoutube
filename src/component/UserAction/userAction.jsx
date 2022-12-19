@@ -39,30 +39,31 @@ const UserAction = () => {
     const [open, setOpen] = React.useState(false);
     const [check, setCheck] = React.useState(false);
     const [data, setData] = React.useState({});
+    const [showPassword, setShowPassword] = React.useState(false);
+    const { register, handleSubmit, formState: { errors } } = useForm();
+
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-    const { register, handleSubmit, formState: { errors } } = useForm();
-  const onSubmit = data => {
-    console.log(data.image[0])
-    const ad = data.image[0]
-    console.log(URL.createObjectURL(ad))
-     
-    
-        setData(data)
-        setCheck(true)
-        setOpen(false)
-  };
- 
-  const [showPassword, setShowPassword] = React.useState(false);
-
+    const onSubmit = data => { 
+           
+            setData(data)
+            setCheck(true)
+            setOpen(false)
+          
+    };
   const handleClickShowPassword = () => setShowPassword((show) => !show);
-
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
   const handleClear = () => {
     setData({})
     setCheck(false)
+  }
+  const stringAvatar = (name) => {
+    const newString = name.split(' ')
+    return {
+        children: `${newString[newString.length - 1][0].toUpperCase()}`
+    }
   }
   return (
     <div className={styles.actions}>
@@ -138,10 +139,11 @@ const UserAction = () => {
                                         label="Name"
                                         type="text"
                                         margin="normal"
-                                        {...register("name", {required:{value:true,message:'Vui lòng nhập trường này !'}})}
-                                        error={errors.name}
+                                        {...register("FirstName", {required:{value:true,message:'Vui lòng nhập trường này !'}})}
+                                        error={errors.FirstName}
                                     />
-                                     {errors.name && <span className={styles.errorsMess}>{errors.name.message}</span>}
+                                     {errors.FirstName && <span className={styles.errorsMess}>{errors.FirstName.message}</span>}
+                                     {errors.LastName && <span classLast Name={styles.errorsMess}>{errors.LastName.message}</span>}
                                     <TextField
                                         fullWidth={true}
                                         id="outlined-email-input"
@@ -190,16 +192,7 @@ const UserAction = () => {
                                                 label="Password"
                                             />
                                         </FormControl>
-                                        <TextField
-                                            fullWidth={true}
-                                            id="outlined-text-input"
-                                            type="file"
-                                            margin="normal"
-                                            
-                                            {...register("image", {required:{value:true,message:'Vui lòng nhập trường này !'}})}
-                                            error={errors.image}
-                                        />
-                                        {errors.image && <span className={styles.errorsMess}>{errors.image.message}</span>}
+                                        {errors.password && <span className={styles.errorsMess}>{errors.password.message}</span>}
                                     <Button type='submit' variant="outlined">Đăng nhập</Button>
                                 </form>
                                 </Box>
@@ -230,7 +223,7 @@ const UserAction = () => {
                     <div>
                         <Tooltip title="Thông tin">
                             <IconButton aria-label="delete">
-                               {!check ?  <FaUser className="icon"/> : <Avatar src="https://scontent.fhan17-1.fna.fbcdn.net/v/t1.6435-9/131116770_2335369719941917_4781047492349765103_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=dFPA4huey-4AX-M2wFO&tn=WB2swL9raoyU2V8e&_nc_ht=scontent.fhan17-1.fna&oh=00_AfB0eG3VKTCDInPufF3UyEoLGGzAr2acmuUOf-nhQdtvjA&oe=63C3BC5A" sx={{width:25,height:25}}/>}
+                               {!check ?  <FaUser className="icon"/> : <Avatar {...stringAvatar(data.FirstName)} sx={{width:25,height:25,bgcolor:'green'}}/>}
                             </IconButton>
                         </Tooltip>
                     </div>

@@ -1,13 +1,13 @@
 .item {
     width: 24%;
     border-radius: 10px;
-    overflow: hidden;
-    
+    overflow: hidden; 
     border-radius: 10px;
     &:hover {
         transform: scale(1.1);
-        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;}
-        transition: transform 0.5s ease-in-out , box-shadow 0.5s ease-in-out;
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        transition: transform 0.5s 1s ease-in-out , box-shadow 0.5s 1s ease-in-out;
+    }
     img {
         width: 100% !important;
         height: 100% !important;
@@ -47,6 +47,20 @@
     overflow: hidden;
     text-overflow: ellipsis; 
     
+}
+.title {
+    font-size: 15px;
+    font-weight: 500;
+    max-height: 4rem;
+    overflow: hidden;
+    display: block;
+    -webkit-line-clamp: 2;
+    display: box;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    white-space: normal;
+    margin-bottom: 4px;
 }
 @media screen and (max-width: 505px) {
     .nam {

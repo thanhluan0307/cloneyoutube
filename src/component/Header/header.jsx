@@ -89,8 +89,8 @@ function Header({setCheck}) {
               <Search/>
             </div>
 
-            <div style={{display:'flex',alignItems:'center',color:' rgba(0, 0, 0, 0.54)',fontSize:'18px'}}>
-              {width < 655 ?
+            <div style={{display:'flex',alignItems:'center',color:' rgba(0, 0, 0, 0.54)',fontSize:'18px',columnGap:'12px'}}>
+              {width < 710 ?
                   <>
                     <Tooltip title="Tìm kiếm" onClick={handleOpen}>
                       <IconButton aria-label="delete">

@@ -44,9 +44,7 @@ import { VideoContext } from '../../videoContext';
    },[])
    
   return (
-    <div className={check ? styles.item : styles.nam} 
-    //onMouseMove={()=>setPlayVideo(true)} onMouseLeave={() => setPlayVideo(false)}
-    >
+    <div className={check ? styles.item : styles.nam}>
       <Card sx={{ width:"100%" ,borderRadius:"10px",boxShadow:"none"}}>
         {dataCard.load ? (
           <Link to={`/video/${idVideo}`}>
@@ -78,11 +76,11 @@ import { VideoContext } from '../../videoContext';
               }
     
                 {dataCard.load ? (    
-                    <Box sx={{width:'100%'}}>
+                    <Box sx={{width:'100%',position:'relative'}}>
                         <Link to={`/video/${idVideo}`}>
-                          <Typography component={'span'} gutterBottom variant="body2" sx={{fontWeight:'bold',marginBottom:'4px'}}>
+                          <p className={styles.title} component={'span'}>
                             {data?.snippet?.title}
-                          </Typography>
+                          </p>
                           <Typography component={'span'} display="block" variant="caption" color="text.secondary" sx={{fontSize:"12px"}}>
                             {data?.snippet?.channelTitle}
                           </Typography>
@@ -90,20 +88,23 @@ import { VideoContext } from '../../videoContext';
                             { view.length === 6 ? `${view.slice(0,3)} N lượt xem`:`${view[0]} Tr lượt xem` } | {time}
                           </Typography>
                         </Link>
+
                     </Box>
                 ):(
                   <Box sx={{ pt: 3 }}>
                     <Skeleton width="200px"/>
                     <Skeleton width="200px" />
                   </Box>
-                )}
-              
-      
+                )}              
           </CardContent>
-        
     </Card>
     </div>
   );
 }
 
 export default memo(VideoCard)
+
+
+
+
+

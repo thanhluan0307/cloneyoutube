@@ -25,7 +25,6 @@ const SearchVideo = () => {
   return (
     <>
     <Header setCheck={setCheck}/>
-
     {check ? <NavbarPc/> : <NavbarMobi/>}
       <div className={check ? styles.wrapper : styles.ml260}>
         {data.map(item => {

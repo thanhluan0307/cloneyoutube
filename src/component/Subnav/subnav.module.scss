@@ -1,33 +1,55 @@
 .wrapper {
-    display: flex;
     position: fixed;
     top: 64px;
     left: 290px;
     right: 0;
-    z-index: 1;
+    z-index: 3;
     background-color:white;
     padding: 15px 0 10px 0;
-    width: 85%;
+    width: 82%;
+    color: black;
 }
 .ml30 {
-    display: flex;
     position: fixed;
     top: 64px;
-    left: 104px;
+    left: 126px;
     right: 0;
     z-index: 1;
     background-color:white;
     padding: 15px 0 10px 0;
     width: 90%;
+    color: black;
+
 }
-@media screen and (max-width:655px) {
+.btn {
+    margin-right: 10px;
+}
+.active {
+    color:#fff !important;
+    background-color: #0f0f0f !important;
+}
+@media screen and (max-width:450px) {
     .ml30 {
-        left: 0;
-        width: 100%;
+        left: 44px;
+        width: 80%;
     }
 }
-@media screen and (min-width:655px) and (max-width:1300px) {
+
+@media screen and (min-width:450px) and (max-width:655px){
     .ml30 {
-        left: 100px;
+        left: 37px;
+        width: 87%;
     }
 }
+@media screen and (min-width:655px) and (max-width:1120px) {
+    .ml30 {
+        left: 130px;
+    }
+}
+@media screen and (min-width:1120px) and (max-width:1300px) {
+    .ml30 {
+        left: 150px;
+        width: 84%;
+    }
+}
+

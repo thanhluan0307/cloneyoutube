@@ -22,24 +22,30 @@ export const categorys = [
     {id:'VE',name:'Venezuela'},
     {id:'GH',name:'Ghana'},
     {id:'LY',name:'Libya'},
+    { name: "Indonesia", id: "ID"},
+    { name: "Japan", id: "JP"},
+    { name: "Korea", id: "KR"},
+    { name: "Tây Ban Nha", id: "SP"},
 ]
+
 
 function VideoProvider ({children}) {
     const timerID = useRef()
-    const [load,setload] = useState(false)
+    const [load,setLoad] = useState(false)
     const [listCard,setListCard] = useState([])
     const [nextPage,setNextPage] = useState('')
     const [check,setCheck] = useState(true)
     useEffect(() => {
-        fetchingAPI(`videos?part=snippet,contentDetails,statistics&chart=mostPopular&regionCode=VN&maxResults=24&pageToken=${nextPage}`)
+        fetchingAPI(`videos?part=snippet,contentDetails,statistics&chart=mostPopular&regionCode=UY&maxResults=24&pageToken=${nextPage}`)
             .then(res => {
                 setListCard([...listCard,...res.items])
                 timerID.current = setTimeout(()=> {
-                    setload(true)
-                },1000)
+                    setLoad(true)
+                },500)
                 window.onscroll = function () {
                     if (window.innerHeight + document.documentElement.scrollTop
                     >= (document.documentElement.offsetHeight - 200)  ) {
+                        setLoad(false)
                         setNextPage(res.nextPageToken)
                     }
                 }
@@ -50,9 +56,10 @@ function VideoProvider ({children}) {
     const data = {
         listCard,
         load,
-        setListCard,
         check,
-        setCheck
+        setListCard,
+        setCheck,
+        setLoad
     }
 
     return (
