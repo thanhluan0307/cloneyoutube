@@ -1,9 +1,9 @@
 
-import { memo, useContext, useMemo, useState } from 'react'
+import { memo, useContext, useMemo, useRef, useState } from 'react'
 
 import { Box } from '@mui/system';
 import Card from '@mui/material/Card';
-import { Avatar } from '@mui/material';
+import { Avatar, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import styles from "./video.module.scss";
 import Skeleton from '@mui/material/Skeleton';
@@ -11,25 +11,32 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';
 import { VideoContext } from '../../videoContext';
+import { RiMore2Fill } from 'react-icons/ri';
+
+
+import QueryBuilderIcon from '@mui/icons-material/QueryBuilder';
+import {BsCollectionPlay} from "react-icons/bs";
+
 
  function VideoCard({data,idVideo,check}) {
+
   const [playVideo,setPlayVideo] = useState(false)
-   const dataCard = useContext(VideoContext)
-    const URL = `https://www.youtube.com/embed/${idVideo}?autoplay=1&controls=0&showinfo=0`
-    const view = data?.statistics?.viewCount 
-    const timeCreateVideo = data?.snippet?.publishedAt
-    const time = useMemo(()=> {
-      let time = (Date.parse(new Date()) - Date.parse(timeCreateVideo))/ 100 / 60 / 60
-      let check = 0;
-      let day = 0;
-      let month = 0;
-      let year = 0;
-      if (time > 24) {
-        day = Math.round(time / 24);
-        if (day > 30) {
+  let timeId = useRef()
+  const dataCard = useContext(VideoContext)
+  const view = data?.statistics?.viewCount 
+  const timeCreateVideo = data?.snippet?.publishedAt
+  const time = useMemo(()=> {
+     let time = (Date.parse(new Date()) - Date.parse(timeCreateVideo))/ 100 / 60 / 60
+     let check = 0;
+     let day = 0;
+     let month = 0;
+     let year = 0;
+     if (time > 24) {
+       day = Math.round(time / 24);
+       if (day > 30) {
           month = Math.round(day / 30);
           check += 1;
-  
+          
           if (month > 12) {
             year = Math.round(month / 12);
             check += 1;
@@ -39,34 +46,46 @@ import { VideoContext } from '../../videoContext';
       if (check === 2) { return time = year + ' năm trươc'}
       if (check === 1) { return time = month + ' tháng trươc'}
       if (check === 0) { return time = day + ' ngày trươc'}
-     
-   // eslint-disable-next-line react-hooks/exhaustive-deps
-   },[])
-   
-  return (
-    <div className={check ? styles.item : styles.nam}>
+      
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
+  const hanlePlayvideo = async () => {
+      timeId.current = setTimeout(()=> {setPlayVideo(true)},1000)
+   }
+
+  const handlePauseVideo = () => {
+    clearTimeout(timeId.current)
+    setPlayVideo(false)
+   }
+   return (
+    <Link to={`/video/${idVideo}`} className={check ? styles.item : styles.nam} onMouseLeave={handlePauseVideo} >
       <Card sx={{ width:"100%" ,borderRadius:"10px",boxShadow:"none"}}>
         {dataCard.load ? (
-          <Link to={`/video/${idVideo}`}>
+          <div>
             {playVideo ? (   
-              <iframe
-                className={styles.video}
-                width="345px" 
-                height="190px" 
-                src={URL} 
-                title={URL}
+             <div style={{width:'100%',height:'198px'}}>
+                 <iframe
+                  className={styles.video}
+                  width="345px" 
+                  height="100%" 
+                  src={`https://www.youtube.com/embed/${idVideo}?controls=0&showinfo=0&autoplay=1&clipboard-write&modestrbranding=1`} 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  title="s"
+                  allowFullScreen
               >
-              </iframe>) : (   
+              </iframe>
+             </div>) : (   
               <CardMedia
-                sx={{borderRadius:"10px"}}
+                onMouseOver={hanlePlayvideo}
+                sx={{borderRadius:"10px",objectFit:'contain'}}
                 component="img"
                 alt="green iguana"
-                height="188"
+                height="100%"
                 width="100%"
                 image={data?.snippet?.thumbnails?.medium?.url}
               />)}
-          </Link>
-          ) : <Skeleton variant="rectangular" width={345} height={188}  sx={{borderRadius:'10px'}}/>
+          </div>
+          ) : <Skeleton variant="rectangular"  sx={{borderRadius:'10px',width:'100%'}} height={188}/>
         }
       
           <CardContent sx={{display:'flex',padding:'16px 10px 0px 10px',columnGap:'10px'}}>
@@ -74,36 +93,51 @@ import { VideoContext } from '../../videoContext';
               {dataCard.load ? ( <Link to={`/channels/${data?.snippet?.channelId}`}> <Avatar src={data?.snippet?.thumbnails?.default?.url}/></Link>):
                 <Skeleton variant="circular" width={40} height={40} />
               }
-    
                 {dataCard.load ? (    
-                    <Box sx={{width:'100%',position:'relative'}}>
-                        <Link to={`/video/${idVideo}`}>
-                          <p className={styles.title} component={'span'}>
-                            {data?.snippet?.title}
-                          </p>
-                          <Typography component={'span'} display="block" variant="caption" color="text.secondary" sx={{fontSize:"12px"}}>
-                            {data?.snippet?.channelTitle}
-                          </Typography>
-                          <Typography component={'span'} display="block" variant="caption" color="text.secondary" sx={{fontSize:"12px"}}>
-                            { view.length === 6 ? `${view.slice(0,3)} N lượt xem`:`${view[0]} Tr lượt xem` } | {time}
-                          </Typography>
-                        </Link>
-
-                    </Box>
+                  <Box sx={{width:'100%'}}>
+                    <Link to={`/video/${idVideo}`}>
+                      <p className={styles.title} component={'span'}>
+                        {data?.snippet?.title}
+                      </p>
+                      <Typography component={'span'} display="block" variant="caption" color="text.secondary" sx={{fontSize:"12px"}}>
+                        {data?.snippet?.channelTitle}
+                      </Typography>
+                      <Typography component={'span'} display="block" variant="caption" color="text.secondary" sx={{fontSize:"12px"}}>
+                        { view.length === 6 ? `${view.slice(0,3)} N lượt xem`:`${view[0]} Tr lượt xem` } | {time}
+                      </Typography>
+                    </Link>   
+                  </Box>         
                 ):(
                   <Box sx={{ pt: 3 }}>
                     <Skeleton width="200px"/>
                     <Skeleton width="200px" />
                   </Box>
-                )}              
+                )}      
+                    
           </CardContent>
+        <div className={styles.btnVideo}>
+            <Button
+              sx={{textTransform:'none'}}
+              className={styles.actionVideo}
+              startIcon={<QueryBuilderIcon/>}
+            >
+              Xem sau
+            </Button>
+            <Button
+              sx={{textTransform:'none',fontSize:'12px'}}
+              className={styles.actionVideo}
+              startIcon={<BsCollectionPlay/>}
+            >
+              Thêm vào danh sách
+            </Button>
+        </div> 
     </Card>
-    </div>
+    <div className={styles.moreBtn}><RiMore2Fill/></div>
+    </Link>
   );
 }
 
 export default memo(VideoCard)
-
 
 
 

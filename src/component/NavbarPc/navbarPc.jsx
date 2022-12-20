@@ -13,7 +13,7 @@ import {GrGamepad} from "react-icons/gr";
 import {ImNewspaper} from "react-icons/im";
 import {SiRiotgames } from "react-icons/si";
 import {RiFeedbackLine} from "react-icons/ri";
-import { FaHome, FaTv  } from 'react-icons/fa'
+import { FaHome, FaTv, FaVideo  } from 'react-icons/fa'
 import {GiMusicalNotes,GiTrophyCup} from "react-icons/gi";
 import { FcMusic,FcSportsMode,FcNews } from "react-icons/fc";
 import {AiOutlineFire,AiOutlineSetting } from "react-icons/ai";
@@ -28,7 +28,7 @@ const NavbarPc = () => {
     </Box>
     <Box sx={{borderBottom:'1px solid #e5e5e5',padding:'8px 0px'}}>
         <p className={styles.item}><LibraryAddIcon/><span>Thư viện</span></p>
-        <p className={styles.item}><LibraryAddIcon/><span>Video đã xem</span></p>
+        <p className={styles.item}><FaVideo/><span>Video đã xem</span></p>
         <p className={styles.item}><QueryBuilderIcon/><span>Xem sau</span></p>
         <p className={styles.item}><ThumbUpOffAltIcon/><span>Video đã thích</span></p>
     </Box>

@@ -44,7 +44,19 @@ body::-webkit-scrollbar-track {
 input[type="file"] {
   color:#1976d2
 }
-.slick-prev:before,.slick-next:before {
+.slick-slider:hover .slick-prev::before {
+  display: inline-block;
+}
+.slick-slider:hover .slick-next::before {
+  display: inline-block;
+}
+.slick-prev::before {
   color: black !important;
+  display: none;
+  
+}
+.slick-next::before {
+  color: black !important;
+  display: none;
   
 }

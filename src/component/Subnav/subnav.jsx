@@ -39,8 +39,8 @@ const Subnav = ({check}) => {
         <Slider {...settings}>
             {categorys.map(item => {
               return (
-                <div className={styles.btn}>
-                  <ToggleButton value={item.name} key={item.name} className={active === item.id ? styles.active : null} onClick={() => videoByCategory(item.id)} size='small' sx={{border:'none',bgcolor:'#f2f2f2',color:'#0f0f0f',borderRadius: '8px',padding:' 4px 12px'}} >{item.name}</ToggleButton>
+                <div className={styles.btn} key={item.name}>
+                  <ToggleButton value={item.name} className={active === item.id ? styles.active : null} onClick={() => videoByCategory(item.id)} size='small' sx={{border:'none',bgcolor:'#f2f2f2',color:'#0f0f0f',borderRadius: '8px',padding:' 4px 12px'}} >{item.name}</ToggleButton>
                 </div>
               )
             })}
