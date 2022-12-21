@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import {useState, useEffect,createContext, useRef} from "react"
-
+import moment from "moment/moment"
 import { fetchingAPI } from "./fetchingAPI"
 
 const VideoContext = createContext()
@@ -28,6 +28,18 @@ export const categorys = [
     { name: "Tây Ban Nha", id: "SP"},
 ]
 
+export const getFormattedDurationString = (duration) => {
+    let formattedDuration = moment.duration(duration).asSeconds();
+    formattedDuration = moment.utc(formattedDuration * 1000).format("mm:ss");
+  
+    // remove leading '0'
+    formattedDuration =
+      formattedDuration[0] === "0"
+        ? formattedDuration.slice(1)
+        : formattedDuration;
+    return formattedDuration;
+  };
+  console.log(getFormattedDurationString('PT1H42M14S'))
 
 function VideoProvider ({children}) {
     const timerID = useRef()

@@ -57,9 +57,9 @@ const NavbarPc = () => {
     <Box sx={{borderBottom:'1px solid #e5e5e5',padding:'8px 0px'}}>
         <p className={styles.item}><AiOutlineSetting/><span>Cài đặt</span></p>
         <p className={styles.item}><SlNote/><span>NHật ký báo cáo</span></p>
-        <p className={styles.item}><RiFeedbackLine/><span>Gửi ý kiến phản hồi</span></p>
+        <p className={styles.item}><RiFeedbackLine/><span>Gửi ý kiến </span></p>
     </Box>
-    <Box sx={{borderBottom:'1px solid #e5e5e5',padding:'8px 0px'}}>
+    <Box sx={{borderBottom:'1px solid #e5e5e5',padding:'8px 0px',maxWidth:'208px'}}>
         <Typography component={'span'}  variant="body2" color="text.secondary" sx={{fontSize:'13px',color:'#606060',marginBottom:'6px'}}>
             Giới thiệu Báo chí Bản quyền Liên hệ với chúng tôi Người sáng tạo Quảng cáo Nhà phát triển
         </Typography>

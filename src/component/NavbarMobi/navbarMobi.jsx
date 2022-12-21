@@ -8,7 +8,7 @@ import { FaHome  } from 'react-icons/fa'
 import styles from "./navbar.module.scss"
 
 
-const NavbarMobi = () => {
+const Navbarmobi = () => {
    
   return (
   <div className={styles.wrapper}>
@@ -33,4 +33,4 @@ const NavbarMobi = () => {
     </div>
   )
 }
-export default memo(NavbarMobi)
+export default memo(Navbarmobi)

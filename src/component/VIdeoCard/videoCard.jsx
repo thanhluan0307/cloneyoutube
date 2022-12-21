@@ -11,7 +11,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';
 import { VideoContext } from '../../videoContext';
-import { RiMore2Fill } from 'react-icons/ri';
+import {getFormattedDurationString} from '../../videoContext'
 
 
 import QueryBuilderIcon from '@mui/icons-material/QueryBuilder';
@@ -19,10 +19,11 @@ import {BsCollectionPlay} from "react-icons/bs";
 
 
  function VideoCard({data,idVideo,check}) {
-
+  
   const [playVideo,setPlayVideo] = useState(false)
   let timeId = useRef()
   const dataCard = useContext(VideoContext)
+  const duration = data?.contentDetails?.duration
   const view = data?.statistics?.viewCount 
   const timeCreateVideo = data?.snippet?.publishedAt
   const time = useMemo(()=> {
@@ -50,7 +51,7 @@ import {BsCollectionPlay} from "react-icons/bs";
       // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
   const hanlePlayvideo = async () => {
-      timeId.current = setTimeout(()=> {setPlayVideo(true)},1000)
+      timeId.current = setTimeout(()=> {setPlayVideo(true)},2500)
    }
 
   const handlePauseVideo = () => {
@@ -58,12 +59,11 @@ import {BsCollectionPlay} from "react-icons/bs";
     setPlayVideo(false)
    }
    return (
-    <Link to={`/video/${idVideo}`} className={check ? styles.item : styles.nam} onMouseLeave={handlePauseVideo} >
+    <div  className={check ? styles.item : styles.nam} onMouseLeave={handlePauseVideo} >
       <Card sx={{ width:"100%" ,borderRadius:"10px",boxShadow:"none"}}>
         {dataCard.load ? (
-          <div>
+          <Link to={`/video/${idVideo}`}>
             {playVideo ? (   
-             <div style={{width:'100%',height:'198px'}}>
                  <iframe
                   className={styles.video}
                   width="345px" 
@@ -72,23 +72,27 @@ import {BsCollectionPlay} from "react-icons/bs";
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   title="s"
                   allowFullScreen
-              >
-              </iframe>
-             </div>) : (   
-              <CardMedia
-                onMouseOver={hanlePlayvideo}
-                sx={{borderRadius:"10px",objectFit:'contain'}}
-                component="img"
-                alt="green iguana"
-                height="100%"
-                width="100%"
-                image={data?.snippet?.thumbnails?.medium?.url}
-              />)}
-          </div>
+                >
+                </iframe>
+           ) : (   
+              <div style={{position:'relative'}}>
+                  <CardMedia
+                    onMouseOver={hanlePlayvideo}
+                    sx={{borderRadius:"10px",objectFit:'contain'}}
+                    component="img"
+                    alt="green iguana"
+                    height="100%"
+                    width="100%"
+                    image={data?.snippet?.thumbnails?.medium?.url}
+                  />
+                  {/* <div className={styles.duration}>{getFormattedDurationString(duration)}</div> */}
+                  <div className={styles.duration}>Tiếp tục di chuột để phát</div>
+              </div>)}
+          </Link>
           ) : <Skeleton variant="rectangular"  sx={{borderRadius:'10px',width:'100%'}} height={188}/>
         }
       
-          <CardContent sx={{display:'flex',padding:'16px 10px 0px 10px',columnGap:'10px'}}>
+          <CardContent sx={{display:'flex',padding:'10px 10px 0px 10px',columnGap:'10px'}}>
         
               {dataCard.load ? ( <Link to={`/channels/${data?.snippet?.channelId}`}> <Avatar src={data?.snippet?.thumbnails?.default?.url}/></Link>):
                 <Skeleton variant="circular" width={40} height={40} />
@@ -128,12 +132,11 @@ import {BsCollectionPlay} from "react-icons/bs";
               className={styles.actionVideo}
               startIcon={<BsCollectionPlay/>}
             >
-              Thêm vào danh sách
+              Thêm vào 
             </Button>
         </div> 
     </Card>
-    <div className={styles.moreBtn}><RiMore2Fill/></div>
-    </Link>
+    </div>
   );
 }
 

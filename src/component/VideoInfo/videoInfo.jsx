@@ -21,7 +21,7 @@ const VideoInfo = ({data}) => {
   },[data.id])
   return (
     <div className={styles.wrapper}>
-        <div class={styles.iframe}>
+        <div className={styles.iframe}>
           <iframe
             src={`https://www.youtube.com/embed/${data.id}?autoplay=1`} 
             title={data.title}

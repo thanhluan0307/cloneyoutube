@@ -60,3 +60,6 @@ input[type="file"] {
   display: none;
   
 }
+.css-yem0l2-MuiPopper-root-MuiTooltip-popper {
+  z-index: 20 !important;
+}

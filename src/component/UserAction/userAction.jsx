@@ -41,15 +41,13 @@ const UserAction = () => {
     const [data, setData] = React.useState({});
     const [showPassword, setShowPassword] = React.useState(false);
     const { register, handleSubmit, formState: { errors } } = useForm();
-
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const onSubmit = data => { 
-           
-            setData(data)
-            setCheck(true)
-            setOpen(false)
-          
+        console.log(data)
+        setData(data)
+        setCheck(true)
+        setOpen(false)
     };
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleMouseDownPassword = (event) => {
@@ -75,7 +73,7 @@ const UserAction = () => {
                 }>
                     <div>
                         <Tooltip title="Tạo">
-                            <IconButton aria-label="delete">
+                            <IconButton >
                                 <FaVideo className="icon"/>   
                             </IconButton>
                         </Tooltip>
@@ -87,7 +85,7 @@ const UserAction = () => {
                             <Box sx={{display:'flex',alignItems:'center',justifyContent:'space-between',borderBottom:'1px solid rgba(0, 0, 0, 0.15)'}}>
                                 <Typography component={'span'}  sx={{fontSize:'16px'}}>Thông báo</Typography>
                                 <Tooltip title="Cài đặt">
-                                    <IconButton aria-label="delete">
+                                    <IconButton >
                                         <AiOutlineSetting/>
                                     </IconButton>
                                 </Tooltip>
@@ -106,7 +104,7 @@ const UserAction = () => {
                 }>
                     <div>
                         <Tooltip title="Thông báo">
-                            <IconButton aria-label="delete">
+                            <IconButton >
                             <FaBell className="icon"/>
                             </IconButton>
                         </Tooltip>
@@ -114,9 +112,13 @@ const UserAction = () => {
                 </Tippy> 
                  <Tippy trigger="click" interactive placement="bottom-start" offset={[0,0]} content={
                     <Wrapper>
-                        { check ?  <Box sx={{borderBottom:'1px solid #e5e5e5',padding:'8px 0px'}}>
-                            <p className={styles.item}><CiDollar/><p>{data.name}</p></p>
-                            <p className={styles.item}><RiShieldUserLine/><p>{data.email}</p></p>
+                        { check ?  <Box sx={{borderBottom:'1px solid #e5e5e5',padding:'8px 0 8px 20px',display:'flex'}}>
+                            <Avatar {...stringAvatar(data.FirstName)} sx={{width:40,height:40,bgcolor:'green'}}/>
+                           <div>
+                            <p className={styles.item}><span>{data.FirstName}</span></p>
+                            <p className={styles.item}><span>{data.email}</span></p>
+                            <p className={styles.item}><span style={{fontSize:'16px',color:'#2d78db' }}>Quản lý tài khoản Google </span></p>
+                           </div>
                         </Box>: null }
                         <Box sx={{borderBottom:'1px solid #e5e5e5',padding:'8px 0px'}}>
                             <p className={styles.item}><FaRegUserCircle/><p>Kênh của bạn</p></p>
@@ -222,7 +224,7 @@ const UserAction = () => {
                 }>
                     <div>
                         <Tooltip title="Thông tin">
-                            <IconButton aria-label="delete">
+                            <IconButton >
                                {!check ?  <FaUser className="icon"/> : <Avatar {...stringAvatar(data.FirstName)} sx={{width:25,height:25,bgcolor:'green'}}/>}
                             </IconButton>
                         </Tooltip>
