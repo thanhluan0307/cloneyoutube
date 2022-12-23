@@ -59,7 +59,7 @@ import {BsCollectionPlay} from "react-icons/bs";
     setPlayVideo(false)
    }
    return (
-    <div  className={check ? styles.item : styles.nam} onMouseLeave={handlePauseVideo} >
+    <div  className={window.innerWidth > 1300 && check ? styles.item : styles.nam} onMouseLeave={handlePauseVideo} >
       <Card sx={{ width:"100%" ,borderRadius:"10px",boxShadow:"none"}}>
         {dataCard.load ? (
           <Link to={`/video/${idVideo}`}>

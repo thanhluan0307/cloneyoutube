@@ -7,7 +7,7 @@ import { VideoContext } from "../../videoContext";
 function Content({check}) {
     const dataCard = useContext(VideoContext)
     return ( 
-        <div className={check ? styles.ml240 : styles.ml93}>   
+        <div className={window.innerWidth >1300 && check ? styles.ml240 : styles.ml93}>   
              <div className={styles.wrapper}>
                 {dataCard.listCard.map(item => {
                     return (

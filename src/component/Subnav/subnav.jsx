@@ -35,7 +35,7 @@ const Subnav = ({check}) => {
   }
  
   return (
-    <div className={check ? styles.wrapper : styles.ml30}>
+    <div className={window.innerWidth > 1300 && check ? styles.wrapper : styles.ml30}>
         <Slider {...settings}>
             {categorys.map(item => {
               return (
