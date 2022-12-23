@@ -51,7 +51,7 @@ import {BsCollectionPlay} from "react-icons/bs";
       // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
   const hanlePlayvideo = async () => {
-      timeId.current = setTimeout(()=> {setPlayVideo(true)},2500)
+      timeId.current = setTimeout(()=> {setPlayVideo(true)},2000)
    }
 
   const handlePauseVideo = () => {
@@ -85,8 +85,8 @@ import {BsCollectionPlay} from "react-icons/bs";
                     width="100%"
                     image={data?.snippet?.thumbnails?.medium?.url}
                   />
-                  {/* <div className={styles.duration}>{getFormattedDurationString(duration)}</div> */}
-                  <div className={styles.duration}>Tiếp tục di chuột để phát</div>
+                  <div className={styles.duration}>{getFormattedDurationString(duration)}</div>
+                  {/* <div className={styles.duration}>Tiếp tục di chuột để phát</div> */}
               </div>)}
           </Link>
           ) : <Skeleton variant="rectangular"  sx={{borderRadius:'10px',width:'100%'}} height={188}/>

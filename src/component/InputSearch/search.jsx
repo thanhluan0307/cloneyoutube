@@ -53,7 +53,7 @@ const Search = () => {
                                 let searchValue = ''
                                 if(valueData.includes(searchValue)) {
                                     const index = valueData.toLowerCase().indexOf(searchValue)
-                                    searchValue = `${valueData.slice(index,searchValue.length + 30)}...`
+                                    searchValue = `${valueData.slice(index,searchValue.length + 30)}...` 
                                 }
                                 return (
                                     <div onClick={handleClear} key={item.etag}>
