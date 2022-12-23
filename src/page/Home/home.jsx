@@ -18,7 +18,7 @@ const Home = () => {
         <Header setCheck={setCheck}/>
         <Subnav check={check}/>
         <div className={styles.contaier}>
-              {check ? <NavbarPc/> : <NavbarMobi/>}
+              {( window.innerWidth > 1300 && check ) ? <NavbarPc/> : <NavbarMobi/>}
           <Content check={check}/>
         </div>
     </div>

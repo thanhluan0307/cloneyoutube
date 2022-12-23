@@ -39,7 +39,6 @@ export const getFormattedDurationString = (duration) => {
         : formattedDuration;
     return formattedDuration;
   };
-  console.log(getFormattedDurationString('PT1H42M14S'))
 
 function VideoProvider ({children}) {
     const timerID = useRef()
@@ -65,6 +64,7 @@ function VideoProvider ({children}) {
             .catch(error => console.log(error))
         return ()=> clearTimeout(timerID)
     },[nextPage])   
+   
     const data = {
         listCard,
         load,
