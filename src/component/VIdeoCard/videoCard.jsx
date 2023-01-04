@@ -64,7 +64,7 @@ import {BsCollectionPlay} from "react-icons/bs";
         {dataCard.load ? (
           <Link to={`/video/${idVideo}`}>
             {playVideo ? (   
-                 <iframe
+                <iframe
                   className={styles.video}
                   width="345px" 
                   height="100%" 
@@ -100,9 +100,9 @@ import {BsCollectionPlay} from "react-icons/bs";
                 {dataCard.load ? (    
                   <Box sx={{width:'100%'}}>
                     <Link to={`/video/${idVideo}`}>
-                      <p className={styles.title} component={'span'}>
+                      <div className={styles.title} component={'span'}>
                         {data?.snippet?.title}
-                      </p>
+                      </div>
                       <Typography component={'span'} display="block" variant="caption" color="text.secondary" sx={{fontSize:"12px"}}>
                         {data?.snippet?.channelTitle}
                       </Typography>

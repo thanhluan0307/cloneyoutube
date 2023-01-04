@@ -50,7 +50,7 @@ function Header({setCheck}) {
         >
           <List sx={{width:'241px'}}>
             <Link to="/" className={styles.logo} style={{paddingLeft:'27px'}}>
-                <button ><FaBars/></button>
+                <p ><FaBars/></p>
                 <img src={logo} alt="" />
             </Link>
             <NavbarPc/>

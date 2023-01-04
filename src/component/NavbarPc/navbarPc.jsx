@@ -22,42 +22,42 @@ const NavbarPc = () => {
   return (
     <div className={styles.wrapper} >
     <Box sx={{borderBottom:'1px solid #e5e5e5',padding:'8px 0px'}}>
-        <p className={styles.item}><FaHome/><span>Thư viện</span></p>
-        <p className={styles.item}><ShortcutIcon/><span>Shorts</span></p>
-        <p className={styles.item}><SlideshowIcon/><span>Kênh đăng ký</span></p>
+        <div className={styles.item}><FaHome/><span>Thư viện</span></div>
+        <div className={styles.item}><ShortcutIcon/><span>Shorts</span></div>
+        <div className={styles.item}><SlideshowIcon/><span>Kênh đăng ký</span></div>
     </Box>
     <Box sx={{borderBottom:'1px solid #e5e5e5',padding:'8px 0px'}}>
-        <p className={styles.item}><LibraryAddIcon/><span>Thư viện</span></p>
-        <p className={styles.item}><FaVideo/><span>Video đã xem</span></p>
-        <p className={styles.item}><QueryBuilderIcon/><span>Xem sau</span></p>
-        <p className={styles.item}><ThumbUpOffAltIcon/><span>Video đã thích</span></p>
+        <div className={styles.item}><LibraryAddIcon/><span>Thư viện</span></div>
+        <div className={styles.item}><FaVideo/><span>Video đã xem</span></div>
+        <div className={styles.item}><QueryBuilderIcon/><span>Xem sau</span></div>
+        <div className={styles.item}><ThumbUpOffAltIcon/><span>Video đã thích</span></div>
     </Box>
     <Box sx={{borderBottom:'1px solid #e5e5e5',padding:'8px 0px'}}>
         <p className={styles.title}>Kênh đăng ký</p>
-        <p className={styles.item}><FcMusic/><span>Âm nhạc</span></p>
-        <p className={styles.item}><FcSportsMode/><span>Thể thao</span></p>
-        <p className={styles.item}><SiRiotgames/><span>Trò chơi</span></p>
-        <p className={styles.item}><FcNews/><span>Tin tức</span></p>
+        <div className={styles.item}><FcMusic/><span>Âm nhạc</span></div>
+        <div className={styles.item}><FcSportsMode/><span>Thể thao</span></div>
+        <div className={styles.item}><SiRiotgames/><span>Trò chơi</span></div>
+        <div className={styles.item}><FcNews/><span>Tin tức</span></div>
     </Box>
     <Box sx={{borderBottom:'1px solid #e5e5e5',padding:'8px 0px'}}>
         <p className={styles.title}>Khám phá</p>
-        <p className={styles.item}><AiOutlineFire/><span>Thịnh hành</span></p>
-        <p className={styles.item}><GiMusicalNotes/><span>Am nhạc</span></p>
-        <p className={styles.item}><GrGamepad/><span>Trò chơi</span></p>
-        <p className={styles.item}><ImNewspaper/><span>Tin tức</span></p>
-        <p className={styles.item}><GiTrophyCup/><span>Thể thao</span></p>
+        <div className={styles.item}><AiOutlineFire/><span>Thịnh hành</span></div>
+        <div className={styles.item}><GiMusicalNotes/><span>Am nhạc</span></div>
+        <div className={styles.item}><GrGamepad/><span>Trò chơi</span></div>
+        <div className={styles.item}><ImNewspaper/><span>Tin tức</span></div>
+        <div className={styles.item}><GiTrophyCup/><span>Thể thao</span></div>
     </Box>
     <Box sx={{borderBottom:'1px solid #e5e5e5',padding:'8px 0px'}}>
         <p className={styles.title}>Dịch vụ khác</p>
-        <p className={styles.item}><FaHome/><span>Creator Studio</span></p>
-        <p className={styles.item}><ShortcutIcon/><span>Youtobe Music</span></p>
-        <p className={styles.item}><TbMoodKid/><span>Youtobe Kids</span></p>
-        <p className={styles.item}><FaTv/><span>Youtobe TV</span></p>
+        <div className={styles.item}><FaHome/><span>Creator Studio</span></div>
+        <div className={styles.item}><ShortcutIcon/><span>Youtobe Music</span></div>
+        <div className={styles.item}><TbMoodKid/><span>Youtobe Kids</span></div>
+        <div className={styles.item}><FaTv/><span>Youtobe TV</span></div>
     </Box>
     <Box sx={{borderBottom:'1px solid #e5e5e5',padding:'8px 0px'}}>
-        <p className={styles.item}><AiOutlineSetting/><span>Cài đặt</span></p>
-        <p className={styles.item}><SlNote/><span>NHật ký báo cáo</span></p>
-        <p className={styles.item}><RiFeedbackLine/><span>Gửi ý kiến </span></p>
+        <div className={styles.item}><AiOutlineSetting/><span>Cài đặt</span></div>
+        <div className={styles.item}><SlNote/><span>NHật ký báo cáo</span></div>
+        <div className={styles.item}><RiFeedbackLine/><span>Gửi ý kiến </span></div>
     </Box>
     <Box sx={{borderBottom:'1px solid #e5e5e5',padding:'8px 0px',maxWidth:'208px'}}>
         <Typography component={'span'}  variant="body2" color="text.secondary" sx={{fontSize:'13px',color:'#606060',marginBottom:'6px'}}>

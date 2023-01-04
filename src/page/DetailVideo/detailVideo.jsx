@@ -5,7 +5,7 @@ import styles from "./detailVideo.module.scss"
 import { fetchingAPI } from '../../fetchingAPI'
 import Header from "../../component/Header/header"
 import VideoInfo from '../../component/VideoInfo/videoInfo'
-import ListVideo from "../../component/ListVideo/listVideo"
+import ListVideo from "../../component/ListVideoBySeacrchValue/listVideo"
 import { VideoContext } from '../../videoContext'
 
 

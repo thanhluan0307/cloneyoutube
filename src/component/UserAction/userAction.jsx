@@ -67,8 +67,8 @@ const UserAction = () => {
     <div className={styles.actions}>
                 <Tippy  trigger='click' interactive placement="bottom-end" offset={[0,0]} content={
                    <Wrapper>
-                        <p className={styles.item}><BsFillCloudArrowUpFill/><p>Tải lên video</p></p>
-                        <p className={styles.item}><CiWifiOn/><p>Phát trực tiếp</p></p>
+                        <div className={styles.item}><BsFillCloudArrowUpFill/><p>Tải lên video</p></div>
+                        <div className={styles.item}><CiWifiOn/><p>Phát trực tiếp</p></div>
                     </Wrapper>
                 }>
                     <div>
@@ -115,18 +115,18 @@ const UserAction = () => {
                         { check ?  <Box sx={{borderBottom:'1px solid #e5e5e5',padding:'8px 0 8px 20px',display:'flex'}}>
                             <Avatar {...stringAvatar(data.FirstName)} sx={{width:40,height:40,bgcolor:'green'}}/>
                            <div>
-                            <p className={styles.item}><span>{data.FirstName}</span></p>
-                            <p className={styles.item}><span>{data.email}</span></p>
-                            <p className={styles.item}><span style={{fontSize:'16px',color:'#2d78db' }}>Quản lý tài khoản Google </span></p>
+                            <div className={styles.item}><span>{data.FirstName}</span></div>
+                            <div className={styles.item}><span>{data.email}</span></div>
+                            <div className={styles.item}><span style={{fontSize:'16px',color:'#2d78db' }}>Quản lý tài khoản Google </span></div>
                            </div>
                         </Box>: null }
                         <Box sx={{borderBottom:'1px solid #e5e5e5',padding:'8px 0px'}}>
-                            <p className={styles.item}><FaRegUserCircle/><p>Kênh của bạn</p></p>
-                            <p className={styles.item}><SlControlPlay/><p>Youtobe Studio</p></p>
-                            <p className={styles.item}><FiUsers/><p>Chuyển đổi tài khoản</p><MdOutlineArrowForwardIos/></p>
+                            <div className={styles.item}><FaRegUserCircle/><p>Kênh của bạn</p></div>
+                            <div className={styles.item}><SlControlPlay/><p>Youtobe Studio</p></div>
+                            <div className={styles.item}><FiUsers/><p>Chuyển đổi tài khoản</p><MdOutlineArrowForwardIos/></div>
                             {!check ? 
-                            <p onClick={handleOpen} className={styles.item}><FiLogIn/><p>Đăng nhập</p></p> :
-                            <p onClick={handleClear} className={styles.item}><FiLogOut/><p>Đăng xuất</p></p>}
+                            <div onClick={handleOpen} className={styles.item}><FiLogIn/><p>Đăng nhập</p></div> :
+                            <div onClick={handleClear} className={styles.item}><FiLogOut/><p>Đăng xuất</p></div>}
                             <Modal
                                 open={open}
                                 onClose={handleClose}
@@ -202,22 +202,22 @@ const UserAction = () => {
 
                         </Box>
                         <Box sx={{borderBottom:'1px solid #e5e5e5',padding:'8px 0px'}}>
-                            <p className={styles.item}><CiDollar/><p>Giao dịch và mua gói thành viên</p></p>
-                            <p className={styles.item}><RiShieldUserLine/><p>Dữ liệu của bạn trong Youtube</p></p>
+                            <div className={styles.item}><CiDollar/><p>Giao dịch và mua gói thành viên</p></div>
+                            <div className={styles.item}><RiShieldUserLine/><p>Dữ liệu của bạn trong Youtube</p></div>
                         </Box>
                         <Box sx={{borderBottom:'1px solid #e5e5e5',padding:'8px 0px'}}>
-                            <p className={styles.item}><FaRegMoon/><p>Giao diện : Giao diện thiết bị</p><MdOutlineArrowForwardIos/></p>
-                            <p className={styles.item}><FaLanguage/><p>Ngôn ngữ: Tiếng Việt</p><MdOutlineArrowForwardIos/></p>
-                            <p className={styles.item}><BsShieldCheck/><p>Chế độ hạn chế : Đã tắt</p><MdOutlineArrowForwardIos/></p>
-                            <p className={styles.item}><GrLanguage/><p>Địa điểm: Việt Nam</p><MdOutlineArrowForwardIos/></p>
-                            <p className={styles.item}><BsKeyboard/><p>Phím tắt</p></p>
+                            <div className={styles.item}><FaRegMoon/><p>Giao diện : Giao diện thiết bị</p><MdOutlineArrowForwardIos/></div>
+                            <div className={styles.item}><FaLanguage/><p>Ngôn ngữ: Tiếng Việt</p><MdOutlineArrowForwardIos/></div>
+                            <div className={styles.item}><BsShieldCheck/><p>Chế độ hạn chế : Đã tắt</p><MdOutlineArrowForwardIos/></div>
+                            <div className={styles.item}><GrLanguage/><p>Địa điểm: Việt Nam</p><MdOutlineArrowForwardIos/></div>
+                            <div className={styles.item}><BsKeyboard/><p>Phím tắt</p></div>
                         </Box>
                         <Box sx={{borderBottom:'1px solid #e5e5e5',padding:'8px 0px'}}>
-                            <p className={styles.item}><AiOutlineSetting/><p>Cài đặt</p></p>                           
+                            <div className={styles.item}><AiOutlineSetting/><p>Cài đặt</p></div>                           
                         </Box>
                         <Box sx={{paddingTop:'8px'}}>
-                        <p className={styles.item}><FiHelpCircle/><p>Trợ giúp</p></p>
-                        <p className={styles.item}><MdOutlineFeedback/><p>Gửi ý kiến phảm hồi</p></p>
+                        <div className={styles.item}><FiHelpCircle/><p>Trợ giúp</p></div>
+                        <div className={styles.item}><MdOutlineFeedback/><p>Gửi ý kiến phảm hồi</p></div>
                            
                         </Box>
                     </Wrapper>

@@ -48,7 +48,6 @@ const Channels = () => {
               height="238" 
               src="https://www.youtube.com/embed/1sL3Qr2DghU" 
               title="Top 20 Bản Nhạc Nghe Nhiều Nhất 2022 ♫ BXH Nhạc Trẻ Remix Hot TikTok - Nhạc Remix Hot TikTok 2022" 
-              frameBorder="0" 
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
               allowFullScreen>
             </iframe>  

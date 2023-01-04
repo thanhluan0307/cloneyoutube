@@ -18,7 +18,17 @@ const Comment = ({data,channelId}) => {
         <p className={styles.name}>{authorDisplayName}</p>
         <p className={styles.comment}>{textOriginal}</p>
         <Box>
-          <span><Button sx={{color:'black',textTransform:'none',minWidth:'28px',borderRadius:'50%','&:hover': {backgroundColor: 'rgba(0, 0, 0, 0.07)',},fontSize:'16px',alignItems:'center'}}><FaThumbsUp/></Button><span>{likeCount.toString()}</span></span>
+          <div>
+            <Button 
+              sx={{color:'black',textTransform:'none',
+                  minWidth:'28px',borderRadius:'50%','&:hover': {backgroundColor: 'rgba(0, 0, 0, 0.07)',},
+                  fontSize:'16px',alignItems:'center'
+                }}
+            >
+              <FaThumbsUp/>
+            </Button>
+            <span>{likeCount.toString()}</span>
+          </div>
           <Button sx={{color:'black',textTransform:'none',minWidth:'28px',borderRadius:'50%','&:hover': {backgroundColor: 'rgba(0, 0, 0, 0.07)',},marginRight:'18px',fontSize:'16px'}}><FaThumbsDown/></Button>
           <Button sx={{color:'black','&:hover': {backgroundColor: 'rgba(0, 0, 0, 0.07)'},borderRadius:'99px',textTransform:'none',fontSize:'14px'}}>Phản hồi</Button>
         </Box>

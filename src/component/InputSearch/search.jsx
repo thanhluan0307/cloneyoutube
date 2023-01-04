@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { FaKeyboard, FaMicrophone, FaSearch,FaMinus } from 'react-icons/fa'
-import React, { memo, useCallback, useEffect, useState } from 'react'
+import React, { memo, useCallback, useContext, useEffect, useState } from 'react'
 import Tippy from '@tippyjs/react/headless';
 import useDebounce from '../../customHook/useDebounce'
 import styles from "./search.module.scss"
@@ -7,10 +8,12 @@ import { IconButton, Tooltip } from '@mui/material';
 import {fetchingAPI} from "../../fetchingAPI"
 import { Link } from 'react-router-dom'
 import Wrapper from '../Wrapper/wrapper';
+import { VideoContext } from '../../videoContext';
 
 const Search = () => {
     const [searchValue,setSearchValue] = useState('')
     const [searchResult,setSearchResult] = useState([])
+    const {setListSeachVideo} = useContext(VideoContext)
     const debounce = useDebounce(searchValue,500)
     const [check,setCheck] = useState(true)
     useEffect(() => {
@@ -20,6 +23,7 @@ const Search = () => {
           }
         fetchingAPI(`search?part=snippet&type=video&maxResults=10&q=${debounce}`)
             .then(res => {
+                setListSeachVideo(res.items)
                 setSearchResult(res.items)
             })
             .catch(error => console.log(error))
@@ -77,19 +81,19 @@ const Search = () => {
                         onChange={handleChange}
                         onFocus={() => setCheck(true)}
                     />
-                    </Tippy>    
+                </Tippy>    
                 <p><FaKeyboard/></p>
-                {searchValue ? <p onClick={handleClear}><FaMinus/></p> : null }
+                {searchValue ? <div onClick={handleClear}><FaMinus/></div> : null }
                 <Link to={`/search?q=${searchValue}`} className={styles.btnSearch}>
                     <FaSearch/>
                 </Link>
-                <button className={styles.mix}>
+                <div className={styles.mix}>
                     <Tooltip title="Tìm kiếm bằng giọng nói">
                         <IconButton aria-label="delete">
                             <FaMicrophone className="icon"/>
                         </IconButton>
                     </Tooltip>
-                </button>
+                </div>
             </div>   
         </>
     

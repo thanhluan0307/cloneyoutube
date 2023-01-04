@@ -4,12 +4,13 @@ import VideoSmall from '../VideoSmall/videoSmall'
 import { VideoContext } from "../../videoContext";
 
 const ListVideo = () => {
-  const dataCard = useContext(VideoContext)
+  const {listSeachVideo} = useContext(VideoContext)
+  console.log(11,listSeachVideo)
   return (
     <div style={{ flex: 1}}>
-         {dataCard.listCard.map(item => {
+         {listSeachVideo.map(item => {
             return (
-                <VideoSmall key={item.etag} data={item.snippet} idVideo={item.id}/>
+                <VideoSmall key={item.etag} data={item.snippet} idVideo={item.id.videoId}/>
             ) 
          })}
     </div> 

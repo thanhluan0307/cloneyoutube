@@ -5,7 +5,6 @@ import { Typography } from '@mui/material'
 import styles from "./videoSmall.module.scss"
 
 const VideoSmall = ({data,idVideo}) => {
-
   const {title,channelTitle,thumbnails} = data
   return (
     <Link className={styles.wrapper} to={`/video/${idVideo}`}>

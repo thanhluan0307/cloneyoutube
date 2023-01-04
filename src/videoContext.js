@@ -45,6 +45,7 @@ function VideoProvider ({children}) {
     const [load,setLoad] = useState(false)
     const [listCard,setListCard] = useState([])
     const [nextPage,setNextPage] = useState('')
+    const [listSeachVideo,setListSeachVideo] = useState([])
     const [check,setCheck] = useState(true)
     useEffect(() => {
         fetchingAPI(`videos?part=snippet,contentDetails,statistics&chart=mostPopular&regionCode=UY&maxResults=24&pageToken=${nextPage}`)
@@ -69,9 +70,11 @@ function VideoProvider ({children}) {
         listCard,
         load,
         check,
+        listSeachVideo,
         setListCard,
         setCheck,
-        setLoad
+        setLoad,
+        setListSeachVideo
     }
 
     return (

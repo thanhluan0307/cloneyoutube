@@ -25,6 +25,7 @@ const Subnav = ({check}) => {
   let dataContext = useContext(VideoContext)
   const videoByCategory = (value) => {
     dataContext.setLoad(false)
+ 
     fetchingAPI(`videos?part=snippet,contentDetails,statistics&chart=mostPopular&regionCode=${value}&maxResults=24`)
     .then(res => {
           setActive(value)
