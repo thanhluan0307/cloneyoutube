@@ -14,7 +14,7 @@ const Search = () => {
     const [searchValue,setSearchValue] = useState('')
     const [searchResult,setSearchResult] = useState([])
     const {setListSeachVideo} = useContext(VideoContext)
-    const debounce = useDebounce(searchValue,500)
+    const debounce = useDebounce(searchValue,1000)
     const [check,setCheck] = useState(true)
     useEffect(() => {
         if(!debounce.trim()) {
@@ -53,14 +53,20 @@ const Search = () => {
                     <div className={styles.searchResult} tabIndex="-1" {...attrs}>
                         <Wrapper>
                             {searchResult.map(item => {
-                                const valueData = item.snippet.title
+                                const valueData = item.snippet.title.toLowerCase()
+                                console.log('--------',valueData)
                                 let searchValue = ''
                                 if(valueData.includes(searchValue)) {
-                                    const index = valueData.toLowerCase().indexOf(searchValue)
-                                    searchValue = `${valueData.slice(index,searchValue.length + 30)}...` 
+
+                                    const index = valueData.indexOf(debounce.toLowerCase())
+                                    if (index>0) {
+                                        searchValue = valueData.slice(index) 
+                                    }else {
+                                        searchValue = valueData.slice(0)
+                                    }
                                 }
                                 return (
-                                    <div onClick={handleClear} key={item.etag}>
+                                    <div onClick={handleClear} key={item.etag} style={{padding:'4px 0'}}>
                                         <Link to={`/video/${item.id.videoId}`} key={item.etag} className={styles.result}>
                                             <FaSearch/>
                                             <span>{searchValue.toLowerCase()}</span>
@@ -83,7 +89,7 @@ const Search = () => {
                     />
                 </Tippy>    
                 <p><FaKeyboard/></p>
-                {searchValue ? <div onClick={handleClear}><FaMinus/></div> : null }
+                {searchValue ? <div style={{display: 'flex',alignItems: 'center',paddingRight:'8px',cursor:'pointer'}} onClick={handleClear}><FaMinus/></div> : null }
                 <Link to={`/search?q=${searchValue}`} className={styles.btnSearch}>
                     <FaSearch/>
                 </Link>
