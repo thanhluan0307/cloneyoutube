@@ -18,9 +18,12 @@ import QueryBuilderIcon from '@mui/icons-material/QueryBuilder';
 import {BsCollectionPlay} from "react-icons/bs";
 
 
+
  function VideoCard({data,idVideo,check}) {
   
   const [playVideo,setPlayVideo] = useState(false)
+  const [show,setShow] = useState(true)
+  
   let timeId = useRef()
   const dataCard = useContext(VideoContext)
   const duration = data?.contentDetails?.duration
@@ -50,13 +53,15 @@ import {BsCollectionPlay} from "react-icons/bs";
       
       // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
-  const hanlePlayvideo = async () => {
+  const hanlePlayvideo =  () => {
       timeId.current = setTimeout(()=> {setPlayVideo(true)},2000)
+      setShow(false)
    }
 
   const handlePauseVideo = () => {
     clearTimeout(timeId.current)
     setPlayVideo(false)
+    setShow(true)
    }
    return (
     <div  className={window.innerWidth > 1300 && check ? styles.item : styles.nam} onMouseLeave={handlePauseVideo} >
@@ -85,15 +90,17 @@ import {BsCollectionPlay} from "react-icons/bs";
                     width="100%"
                     image={data?.snippet?.thumbnails?.medium?.url}
                   />
-                  <div className={styles.duration}>{getFormattedDurationString(duration)}</div>
-                  {/* <div className={styles.duration}>Tiếp tục di chuột để phát</div> */}
+                  {show ? 
+                    <div className={styles.duration}>{getFormattedDurationString(duration)}</div> :
+                    <div className={styles.duration}>Tiếp tục di chuột để phát</div>
+                  }    
               </div>)}
           </Link>
           ) : <Skeleton variant="rectangular"  sx={{borderRadius:'10px',width:'100%'}} height={188}/>
         }
       
-          <CardContent sx={{display:'flex',padding:'10px 10px 0px 10px',columnGap:'10px'}}>
-        
+          <CardContent sx={{display:'flex',padding:'10px 30px 0px 10px',columnGap:'10px',position:'relative'}}>
+              
               {dataCard.load ? ( <Link to={`/channels/${data?.snippet?.channelId}`}> <Avatar src={data?.snippet?.thumbnails?.default?.url}/></Link>):
                 <Skeleton variant="circular" width={40} height={40} />
               }
