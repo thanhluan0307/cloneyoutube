@@ -34,16 +34,16 @@ const SearchVideo = () => {
             <div className={styles.video}> 
               <img  src={item?.snippet?.thumbnails?.medium?.url} alt=""/> 
               <div className={styles.icons}>
-                  <p><AiOutlineClockCircle/></p>
-                  <p> <AiOutlineMenuUnfold/></p>
+                  <div><AiOutlineClockCircle/></div>
+                  <div> <AiOutlineMenuUnfold/></div>
               </div>
             </div>
             <div className={styles.info}>
-                <p className={styles.title}>{item?.snippet?.title}</p>
-                <Link to={`/channels/${item?.snippet?.channelId}`}> 
-                  <p className={styles.channels}><Avatar src={item?.snippet?.thumbnails?.medium?.url} sx={{width:'30px',height:'30px'}}/><span>{item?.snippet?.channelTitle}</span></p>
-                </Link>
-                <p className={styles.des}>{item?.snippet?.description}</p>
+                <div className={styles.title}>{item?.snippet?.title}</div>
+                {/* <Link to={`/channels/${item?.snippet?.channelId}`}>  */}
+                  <div className={styles.channels}><Avatar src={item?.snippet?.thumbnails?.medium?.url} sx={{width:'30px',height:'30px'}}/><span>{item?.snippet?.channelTitle}</span></div>
+                {/* </Link> */}
+                <div className={styles.des}>{item?.snippet?.description}</div>
             </div>
             <div className={styles.more}>
               <RiMore2Fill/>
